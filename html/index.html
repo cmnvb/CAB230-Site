@@ -15,29 +15,32 @@
 	</nav>
 
 	<main>
-		<form id="wrapper">
-			<div>
-				<select name="suburb" required>
-					<option value="" disabled selected hidden>Select a suburb</option>
-					<option value="place">place</option>
-					<option value="holder">holder</option>
-				</select>
-			</div>
-			<div>
-				<input type="text" name="name" placeholder="Enter park name"></input>
-			</div>
-			<div>
-				<select name="rating" required>
-					<option value="" disabled selected hidden>Select a rating</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-				</select>
-			</div>
-			<div>
-				<input type="submit" value="Search" method="get"></input>
-			</div>
-		</form>
+		<div id="wrapper">
+			<form method="get">
+				<div>
+					<select name="suburb" required>
+						<option value="" disabled selected hidden>Select a suburb</option>
+						<option value="place">place</option>
+						<option value="holder">holder</option>
+					</select>
+				</div>
+				<div>
+					<input type="text" name="name" placeholder="Enter park name"></input>
+				</div>
+				<div>
+					<select name="rating" required>
+						<option value="" disabled selected hidden>Select a rating</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+				</div>
+				<div>
+					<input type="submit" value="Search"></input>
+				</div>
+			</form>
+			<p id="autofind">Or just <a id="findme" href="#">find me!</a></p>
+		</div>
 	</main>
 
 	<footer>

@@ -43,7 +43,7 @@ nav a {
 	text-decoration: none;
 }
 
-form {
+#wrapper {
 	position: absolute;
 	width: 80%;
 	max-width: 1024px;
@@ -52,6 +52,10 @@ form {
 	left: 50%;
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
+}
+
+form {
+	width: 100%;
 	display: table;
 }
 
@@ -63,6 +67,11 @@ form div {
 input, select {
 	height: 100%;
 	width: 100%;
+}
+
+#autofind {
+	clear:both;
+	text-align: center;
 }
 
 footer {
