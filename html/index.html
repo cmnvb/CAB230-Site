@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Park Search</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+</head>
+
+<body>
+	<nav>
+		<h1><a id="home" href="#">Brisbane Parks</a></h1>
+		<a class="nav-element" href="#">Sign up</a>
+		<a class="nav-element" href="#">Log in</a>
+		<a class="nav-element" href="#">What's On</a>
+		<a class="nav-element" href="#">About</a>
+	</nav>
+
+	<main>
+		<form id="wrapper">
+			<div>
+				<select name="suburb" required>
+					<option value="" disabled selected hidden>Select a suburb</option>
+					<option value="place">place</option>
+					<option value="holder">holder</option>
+				</select>
+			</div>
+			<div>
+				<input type="text" name="name" placeholder="Enter park name"></input>
+			</div>
+			<div>
+				<select name="rating" required>
+					<option value="" disabled selected hidden>Select a rating</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select>
+			</div>
+			<div>
+				<input type="submit" value="Search" method="get"></input>
+			</div>
+		</form>
+	</main>
+
+	<footer>
+		<p>etc. etc. QUT</p>
+	</footer>
+</body>
+</html>
