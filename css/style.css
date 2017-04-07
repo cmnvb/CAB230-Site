@@ -1,0 +1,134 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	min-width: 1024px;
+	font-family: Verdana, Geneva, sans-serif;
+}
+select:invalid {
+	color: grey;
+}
+
+option {
+	color:black;
+}
+
+nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	background-color: black;
+	height: 40px;
+}
+
+#home {
+	float: left;
+	padding-left: 10px;
+}
+
+.nav-element {
+	float: right;
+	padding: 0 5px;
+
+}
+
+.nav-element:hover {
+	background-color: #262626;
+}
+
+nav a {
+	height: 40px;
+	line-height: 40px;
+	color: white;
+	text-decoration: none;
+}
+
+#wrapper {
+	position: absolute;
+	width: 80%;
+	max-width: 1024px;
+	height: 40px;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+form {
+	width: 100%;
+	display: table;
+}
+
+form div {
+	height: 40px;
+	display: table-cell;
+}
+
+input, select {
+	height: 100%;
+	width: 100%;
+}
+
+#autofind {
+	clear:both;
+	text-align: center;
+}
+
+footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+footer p {
+	float: right;
+}
+
+/*results*/
+#results-wrapper {
+	width: 80%;
+	margin: 40px 10% 0;
+}
+
+#header {
+	clear: both;
+	overflow: auto;
+	width: 100%;
+	height: 37px;
+}
+
+#header-text {
+	float:left;
+	height: 37px;
+	line-height: 37px;
+}
+
+#search-again {
+	float: right;
+	height: 37px;
+	line-height: 37px;
+}
+
+#display-results{
+	width:60%;
+	background:#ccc;
+	float: left;
+	overflow: auto;
+}
+
+#display-results > li {
+	display:block;
+	margin-left: 10px;
+}
+
+#map {
+	width: 40%;
+	float: right;
+	height: 200px;
+	background-color: black;
+}
