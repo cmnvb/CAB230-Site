@@ -48,11 +48,6 @@ form div {
 	display: table-cell;
 }
 
-/*THIS WILL HAVE TO BE REMOVED, NOT VALID IN CSS3, FIND A JS ALTERNATIVE*/
-select:invalid {
-	color: grey;
-}
-
 input, select {
 	height: 100%;
 	width: 100%;
@@ -65,6 +60,10 @@ option {
 input[type = submit]{
 	background: #895494;
 	color: white;
+}
+
+#suburb {
+	color: grey;
 }
 
 #autofind {

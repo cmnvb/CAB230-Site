@@ -1,5 +1,5 @@
 function initialise() {
-	findMeButton = document.getElementById("findme");
+	var findMeButton = document.getElementById("findme");
 	findMeButton.addEventListener("click", findPosition);
 }
 
