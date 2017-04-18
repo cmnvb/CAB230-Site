@@ -1,22 +1,28 @@
 #wrapper{
-    padding-top:0;
+	height:auto;
+	padding:40px 10px 0 10px;
 }
-.registration-form{
+#registration-form{
     width: 400px;
-    padding: 40px;
+    padding: 10px;
+    margin:auto;
     
 }
 
-.registration-form input, select{
-    padding:3px ;
-    line-height:2;
+#registration-form input[type=text], select{
+
+    padding: 30px 0 0 0;
     border-style: none;
     width:100%;
+    color:grey;
+    
 }
+
 input[type = submit]{
 	background: #895494;
 	color: white;
     padding:5px 20px;
+    margin: auto;
 }
 input[type = submit]:hover{
 	background:#42113c;

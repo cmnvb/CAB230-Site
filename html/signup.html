@@ -23,19 +23,24 @@
 
 	<main>
 		<div id="wrapper">
-			<div class="registration-form">
-				<h1>Create An Account</h1><br>
+			<div id="crumb">
+				<p><a href="index.html">Search</a> > Park Name</p>
+			</div>
+			<div id="header">
+				<h1 id="header-text">Create An Account</h1></div>
+			<div id="registration-form">
 				<form action="index.html" method="post">
-					<input type="text" name="username" placeholder="Please Choose A Username" required/><hr>
-					<input type="text" name="email" placeholder="Insert Your Email Address" required/><hr>
+					<input type="text" name="username" placeholder="Username" required/><hr>
+					<input type="text" name="email" placeholder="Email Address" required/><hr>
+					<input type="text" name="children" placeholder="Number of Children" required/><hr>
 					<select name="suburb" required>
-						<option value="" disabled selected hidden>Select a suburb</option>
+						<option value="" disabled selected hidden>Select A Suburb</option>
 						<option value="place">place</option>
 						<option value="holder">holder</option>
 					</select><hr>
 					<input type="text" name="password" placeholder="Insert Password" required/><hr>
 					<input type="text" name="passwordConfirm" placeholder="Confirm Password" required/><hr>
-	
+					<br>
 					<input type="submit" value="Send" />
 				</form>
 			</div>
