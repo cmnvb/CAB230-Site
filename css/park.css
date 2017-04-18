@@ -1,7 +1,3 @@
-#wrapper{
-	height:auto;
-	padding:90px 10px 0 10px;
-}
 /*Header*/
 #header {
 	box-sizing: border-box;
@@ -24,39 +20,43 @@
 	line-height: 37px;
 }
 
-#results{
-	width:50%;
-	height: 100%;
-	background:#ccc;
+#left-side {
 	float: left;
-	overflow: auto;
+	width: 50%;
+	height: 100%;
 }
 
-#results > li {
-	display:block;
-	height: 350px;
+#review{
+	width:50%;
+	height: 100%;
+	float: right;
+	background-color: white;
+	padding: 10px;
+	box-sizing: border-box;
+	overflow-y: auto;
+}
+#review > li{
+	width: 100%;
+	display: table-row;
 }
 
 #user-information{
-	float: left;
-	padding-right:3em;
+	display:table-cell;
 }
 #user-review{
 	padding: 1em;
+	display: table-cell;
 	
-}
-#park-image{
-	float:left;
-	width:55%;
-	height: 250px;
-	background-size: cover;
-	background:url(../images/search-background.jpg) no-repeat;
 }
 #map-image{
-	float: right;
+	float: left;
 	background: url(../images/map.png) no-repeat center center;
 	background-size: cover;
-	width: 40%;
-	height: 250px;
+	width: 100%;
+	height: 300px;
 	
+}
+#park-content{
+	float:left;
+	position: relative;		
 }

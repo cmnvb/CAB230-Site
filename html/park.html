@@ -11,8 +11,8 @@
 
 <body>
 	<nav>
-		<h1><a id="home" href="index.html">Brisbane Parks</a></h1>
-		<a class="nav-element" href="#">Sign up</a>
+		<a id="home" href="index.html">Brisbane Parks</a>
+		<a class="nav-element" href="signup.html">Sign up</a>
 		<a class="nav-element" href="#">Log in</a>
 		<a class="nav-element" href="#">What's On</a>
 		<a class="nav-element" href="#">About</a>
@@ -21,44 +21,100 @@
 	<main>
 
 		<div id="wrapper">
-			<div id="crumb">
-				<p><a href="index.html">Search</a> > Park Name</p>
-			</div>
 			<div id="header">
+				<div id="crumb">
+					<p><a href="index.html">Search</a>> <a href=results.html">Results</a> > Park Name</p>
+				</div>
 				<h1 id="header-text">Park Name</h1>
-				<a id="search-again" href="#">Search again?</a>
+				<a id="search-again" href="index.html">Search again?</a>
 			</div>
-			<div id= park-image></div>
-			<div id=map-image></div>
-			<div id= "park-content">
-				<h1>&#9733;&#9733;&#9733;&#9733;&#9734;</h1>
-				<h2>Suburb</h2>
-				<h3>Street</h3>
-				<br><br>
-			</div>
-			<div><h2>Reviews</h2><br></div>
-			<!-- User information div-->
-			<div id= "user-information">
-				<p>User Name</p><p>&#9733;&#9733;&#9733;&#9733;&#9734;</p><p>Date</p>
-			</div>
-			<!-- The worded review-->
-			<div id="user-review">
-				<p> This park was great</p>
+			<div id="left-side">
+				<div id=map-image></div
+				<!-- overall rating -->
+				<div id= "park-content">
+					<h1>&#9733;&#9733;&#9733;&#9733;&#9734;</h1>
+					<h2>Suburb</h2>
+					<h3>Street</h3>
+				</div>
 			</div>
 			
-			<br>
-			
-			<!-- User information div-->
-			<div id= "user-information">
-				<p>User Name</p><p>&#9733;&#9733;&#9733;&#9733;&#9734;</p><p>Date</p>
-			</div>
-			<!-- The worded review-->
-			<div id="user-review">
-				<p> This park was great</p>
-			</div>
+			<!-- Reviews -->
+			<ul id=review>
+				<li><h2>Reviews</h2></li>
+				<li>
+					<div id= "user-information">
+						<p class= "username">User Name</p>
+						<p class= "rating">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+						<p class= "Date">Date</p>
+					</div>
+					<div id="user-review">
+						<p> This park was great</p>
+					</div>
+				</li>
+				<li>
+					<div id= "user-information">
+						<p class= "username">User Name</p>
+						<p class= "rating">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+						<p class= "Date">Date</p>
+					</div>
+					<div id="user-review">
+						<p> This park was great</p>
+					</div>
+				</li>
+				<li>
+					<div id= "user-information">
+						<p class= "username">User Name</p>
+						<p class= "rating">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+						<p class= "Date">Date</p>
+					</div>
+					<div id="user-review">
+						<p> This park was great</p>
+					</div>
+				</li>
+				<li>
+					<div id= "user-information">
+						<p class= "username">User Name</p>
+						<p class= "rating">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+						<p class= "Date">Date</p>
+					</div>
+					<div id="user-review">
+						<p> This park was great</p>
+					</div>
+				</li>
+				<li>
+					<div id= "user-information">
+						<p class= "username">User Name</p>
+						<p class= "rating">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+						<p class= "Date">Date</p>
+					</div>
+					<div id="user-review">
+						<p> This park was great</p>
+					</div>
+				</li>
+				<li>
+					<div id= "user-information">
+						<p class= "username">User Name</p>
+						<p class= "rating">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+						<p class= "Date">Date</p>
+					</div>
+					<div id="user-review">
+						<p> This park was great</p>
+					</div>
+				</li>
+				<li>
+					<div id= "user-information">
+						<p class= "username">User Name</p>
+						<p class= "rating">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+						<p class= "Date">Date</p>
+					</div>
+					<div id="user-review">
+						<p> This park was great</p>
+					</div>
+				</li>
+			</ul>
+		</div>
 			
 	</main>
-
 	<footer>
 		<p></p>
 	</footer>

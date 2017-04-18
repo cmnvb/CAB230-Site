@@ -1,9 +1,11 @@
 /*Header*/
 #header {
+	box-sizing: border-box;
 	top: 40px;
 	position: absolute;
 	height: 50px;
 	width: 80%;
+	padding-right: 20px;
 }
 
 #header-text {
@@ -22,7 +24,6 @@
 #results{
 	width:50%;
 	height: 100%;
-	background:#ccc;
 	float: left;
 	overflow: auto;
 }
@@ -53,7 +54,7 @@
 }
 
 .rating {
-	margin-top: 25px;
+	margin-bottom: 25px;
 }
 
 /*Map*/
