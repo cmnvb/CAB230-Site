@@ -1,28 +1,31 @@
 #wrapper{
-	height:auto;
 	padding:40px 10px 0 10px;
 }
 #registration-form{
-    width: 400px;
-    padding: 10px;
-    margin:auto;
-    
+	width: 400px;
+	padding: 10px;
+	margin:auto;
 }
 
 #registration-form input, select{
+	padding: 30px 0 0 0;
+	border-style: none;
+	width:100%;
+}
 
-    padding: 30px 0 0 0;
-    border-style: none;
-    width:100%;
-    color:grey;
-    
+#DOB {
+	color: grey;
+}
+
+#suburb {
+	color: grey;
 }
 
 input[type = submit]{
 	background: #895494;
 	color: white;
-    padding:5px 20px;
-    margin: auto;
+	padding:5px 20px;
+	margin: auto;
 }
 input[type = submit]:hover{
 	background:#42113c;
