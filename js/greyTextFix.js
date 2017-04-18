@@ -1,6 +1,8 @@
 function initialise() {
 	var suburb = document.getElementById("suburb");
 
+	checkValid(suburb);
+
 	suburb.addEventListener("change", function(){checkValid(suburb)});
 }
 
