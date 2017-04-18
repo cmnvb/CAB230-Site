@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- Page Data -->
+	<meta charset="utf-8" />
 	<title>Park Results</title>
 
+	<!-- Styling -->
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/results.css">
 </head>
 
 <body>
+	<!-- Nav -->
 	<nav>
 		<h1><a id="home" href="index.html">Brisbane Parks</a></h1>
 		<a class="nav-element" href="#">Sign up</a>
@@ -15,50 +20,48 @@
 		<a class="nav-element" href="#">About</a>
 	</nav>
 
+	
 	<main>
-		<div id="results-wrapper">
-			<div id="crumb">
-				<p><a href="index.html">Search</a> > Results page</p>
-			</div>
+		<!-- Results Header -->
+		<!-- 		<div id="background"></div> -->
+		<div id="wrapper">
 			<div id="header">
+				<div id="crumb">
+					<p><a href="index.html">Search</a> > Results page</p>
+				</div>
 				<h1 id="header-text">Top Results</h1>
 				<a id="search-again" href="#">Search again?</a>
 			</div>
-			<!-- <div id="result-wrapper">
-				<div class="result">
-					<img src="" alt="[park name]"/>
-					<p>Name of Parks</p>
-					<p>Location</p>
-					<p>Rating</p>
-				</div>
-				<div class="result">
-					<img src="" alt="[park name]"/>
-					<p>Name of Parks</p>
-					<p>Location</p>
-					<p>Rating</p>
-				</div>
-			</div> -->
-			<ul id="display-results">
-				<li>
-					<img src="" alt="[park name]"/>
-					<p>Name of Park</p>
-					<p>Location</p>
-					<p>Rating</p>
-				</li>
-				<li>
-					<img src="" alt="[park name]"/>
-					<p>Name of Park</p>
-					<p>Location</p>
-					<p>Rating</p>
-				</li>
-			</ul>
 
-			<div id="map"></div>
+			
+				<ul id="results">
+					<li>
+					<!--DON'T USE IMG USE DIV AND IMAGE BACKGROUND INSTEAD-->
+						<div class="park-image"></div>
+						<!-- <img src="../images/square.jpg" alt="[park name]"/> -->
+						<div class="details">
+							<a href="item.html"><p class="park-name">Name of Park</p></a>
+							<p class="location">Location</p>
+							<p class="rating">Rating</p>
+						</div>
+					</li>
+					<li>
+						<div class="park-image"></div>
+						<div class="details">
+							<a href="item.html"><p class="park-name">Name of Park</p></a>
+							<p class="location">Location</p>
+							<p class="rating">Rating</p>
+						</div>
+					</li>
+				</ul>
+
+				<!-- Map -->
+				<div id="map"></div>
 		</div>
 	</main>
 
+	<!-- Footer -->
 	<footer>
-		<p>etc. etc. QUT</p>
 	</footer>
 </body>
 </html>

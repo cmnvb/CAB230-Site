@@ -1,40 +1,46 @@
+/*Style sheet for Brisbane Parks website by Patrick and Anna
+ *Background Image: Botanic gardens. Taken for this assignment(no copyright here my dudes)
+ *Colours:
+ *Main dark green: #0d2818
+ *Lighter green:#04471c
+ *Purple:#895494
+ * */
+
+/*Soft style reset*/
 * {
 	padding: 0;
 	margin: 0;
 }
 
 body{
+	height: 100vh;
 	min-width: 1024px;
-	font-family: Verdana, Geneva, sans-serif;
+	font-family: 'Open Sans', sans-serif;
+	/*font size: INSERT SIZE;*/
 }
 
-/*THIS WILL HAVE TO BE REMOVED, NOT VALID IN CSS3, FIND A JS ALTERNATIVE*/
-select:invalid {
-	color: grey;
-}
-
-option {
-	color:black;
-}
-
+/*Nav Styling*/
 nav {
+	min-width: 1024px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 	width: 100%;
-	background-color: black;
+	background-color: #0D2818; /*a darkish green*/
 	height: 40px;
 }
 
 #home {
 	float: left;
 	padding-left: 10px;
+	font-family:'Kaushan Script', cursive;
+	letter-spacing: .1em;
 }
 
 .nav-element {
 	float: right;
-	padding: 0 5px;
+	padding: 0 1.5em;
 
 }
 
@@ -49,39 +55,9 @@ nav a {
 	text-decoration: none;
 }
 
-#wrapper {
-	position: absolute;
-	width: 80%;
-	max-width: 1024px;
-	height: 40px;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-}
-
-form {
-	width: 100%;
-	display: table;
-}
-
-form div {
-	height: 40px;
-	display: table-cell;
-}
-
-input, select {
-	
-	height: 100%;
-	width: 100%;
-}
-
-#autofind {
-	clear:both;
-	text-align: center;
-}
-
+/*Footer Styling*/
 footer {
+	min-width: 1024px;
 	position: absolute;
 	right: 0;
 	bottom: 0;
@@ -92,46 +68,15 @@ footer p {
 	float: right;
 }
 
-/*results*/
-#results-wrapper {
+/*Global Styling*/
+#wrapper {
+	box-sizing: border-box; 
 	width: 80%;
-	margin: 40px 10% 0;
+	height: 100vh;
+	margin: 0 10%;
+	padding-top: 90px;
 }
 
-#header {
-	clear: both;
-	overflow: auto;
-	width: 100%;
-	height: 37px;
-}
-
-#header-text {
-	float:left;
-	height: 37px;
-	line-height: 37px;
-}
-
-#search-again {
-	float: right;
-	height: 37px;
-	line-height: 37px;
-}
-
-#display-results{
-	width:60%;
-	background:#ccc;
-	float: left;
-	overflow: auto;
-}
-
-#display-results > li {
-	display:block;
-	margin-left: 10px;
-}
-
-#map {
-	width: 40%;
-	float: right;
-	height: 200px;
-	background-color: black;
+#crumb > p {
+	font-size: 0.7em;
 }

@@ -1,0 +1,77 @@
+/*Body Background Image*/
+body{
+	background: url(../images/search-background.jpg) no-repeat center center fixed;
+	background-size: cover;
+}
+
+/*Box Behind Search*/
+#green-border{
+	background-color: #0D2818;
+	opacity: 0.85;
+	width: 70%;
+	height: 100px;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	padding: 1em;
+	transform: translate(-50%, -50%);
+	position: absolute;
+}
+
+#green-border > p{
+	position: relative;
+	text-align: left;
+	vertical-align: top;
+	color: white;
+}
+
+/*Search Area*/
+#wrapper {
+	position: absolute;
+	width: 65%;
+	height: 40px;
+	top: 50%;
+	left: 50%;
+	margin: 0;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+form {
+	width: 100%;
+	display: table;
+}
+
+form div {
+	height: 40px;
+	display: table-cell;
+}
+
+/*THIS WILL HAVE TO BE REMOVED, NOT VALID IN CSS3, FIND A JS ALTERNATIVE*/
+select:invalid {
+	color: grey;
+}
+
+input, select {
+	height: 100%;
+	width: 100%;
+}
+
+option {
+	color:black;
+}
+
+input[type = submit]{
+	background: #895494;
+	color: white;
+}
+
+#autofind {
+	clear:both;
+	text-align: center;
+	color: white;
+}
+
+#findme{
+	color:white;
+}
