@@ -23,20 +23,22 @@
 
 	<main>
 		<div id="wrapper">
-			<form action="index.html" method="post">
-				<input type="text" name="username" placeholder="Insert Username" required/>
-
-				<select name="suburb" required>
-					<option value="" disabled selected hidden>Select a suburb</option>
-					<option value="place">place</option>
-					<option value="holder">holder</option>
-				</select>
-
-				<input type="text" name="password" placeholder="Insert Password" required/>
-				<input type="text" name="passwordConfirm" placeholder="Confirm Password" required/>
-
-				<input type="submit" value="Send" />
-			</form>
+			<div class="registration-form">
+				<h1>Create An Account</h1><br>
+				<form action="index.html" method="post">
+					<input type="text" name="username" placeholder="Please Choose A Username" required/><hr>
+					<input type="text" name="email" placeholder="Insert Your Email Address" required/><hr>
+					<select name="suburb" required>
+						<option value="" disabled selected hidden>Select a suburb</option>
+						<option value="place">place</option>
+						<option value="holder">holder</option>
+					</select><hr>
+					<input type="text" name="password" placeholder="Insert Password" required/><hr>
+					<input type="text" name="passwordConfirm" placeholder="Confirm Password" required/><hr>
+	
+					<input type="submit" value="Send" />
+				</form>
+			</div>
 		</div>
 	</main>
 
