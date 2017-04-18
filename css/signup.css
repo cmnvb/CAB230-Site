@@ -1,0 +1,26 @@
+#wrapper{
+    padding-top:0;
+}
+.registration-form{
+    width: 400px;
+    padding: 40px;
+    
+}
+
+.registration-form input, select{
+    padding:3px ;
+    line-height:2;
+    border-style: none;
+    width:100%;
+}
+input[type = submit]{
+	background: #895494;
+	color: white;
+    padding:5px 20px;
+}
+input[type = submit]:hover{
+	background:#42113c;
+	-webkit-transition: all .7s ease;
+	-moz-transition: all .7s ease;
+	transition: all .7s ease;
+}
