@@ -36,14 +36,16 @@ nav {
 	padding-left: 10px;
 	font-family:'Kaushan Script';
 	letter-spacing: .1em;
-	-webkit-transition: all 1s ease;
-	-moz-transition: all 1s ease;
-	transition: all 1s ease;
+	-webkit-transition: -webkit-transform 1s ease;
+	-moz-transition: -moz-transform 1s ease;
+	transition: transform 1s ease;
 }
+
 #home:visited{
 	color:white;
-		font-family:'Kaushan Script';
+	font-family:'Kaushan Script';
 }
+
 /* slight decrease in size for home button*/
 #home:hover{
 	-webkit-transform: scale(.95);
