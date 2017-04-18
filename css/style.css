@@ -1,8 +1,8 @@
 /*Style sheet for Brisbane Parks website by Patrick and Anna
  *Background Image: Botanic gardens. Taken for this assignment(no copyright here my dudes)
  *Colours:
- *Main dark green: #0d2818
- *Lighter green:#04471c
+ *Main dark green: #0D2818
+ *Lighter green:#04471C
  *Purple:#895494
  * */
 
@@ -16,7 +16,6 @@ body{
 	height: 100vh;
 	min-width: 1024px;
 	font-family: 'Open Sans', sans-serif;
-	/*font size: INSERT SIZE;*/
 }
 
 /*Nav Styling*/
@@ -27,7 +26,7 @@ nav {
 	left: 0;
 	right: 0;
 	width: 100%;
-	background-color: #0D2818; /*a darkish green*/
+	background-color: #0D2818;
 	height: 40px;
 }
 
