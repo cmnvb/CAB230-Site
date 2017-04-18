@@ -17,6 +17,7 @@ body{
 	min-width: 1024px;
 	font-family: 'Open Sans', sans-serif;
 	/*font size: INSERT SIZE;*/
+	background:url(../images/tree_bark.png);
 }
 
 /*Nav Styling*/
@@ -27,7 +28,7 @@ nav {
 	left: 0;
 	right: 0;
 	width: 100%;
-	background-color: #0D2818; /*a darkish green*/
+	background-color: #0D2818; /*a darkish green #0D2818*/
 	height: 40px;
 }
 
@@ -90,6 +91,7 @@ footer p {
 	height: 100vh;
 	margin: 0 10%;
 	padding-top: 90px;
+	background-color:white;
 }
 
 #crumb > p {

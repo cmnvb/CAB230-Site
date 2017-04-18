@@ -7,6 +7,9 @@
 	background-repeat: repeat;
 }
 
+#wrapper{
+	height:auto;
+}
 /*Header*/
 #header {
 	top: 40px;
