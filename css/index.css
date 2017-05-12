@@ -51,6 +51,9 @@ form div {
 input, select {
 	height: 100%;
 	width: 100%;
+	border-style: solid;
+	border-width:0.5px;
+	border-color:grey;
 }
 
 option {
