@@ -29,17 +29,6 @@
 	display:block;
 }
 
-#results > tr {
-	height: 350px;
-}
-
-/*.park-image {
-	background: url(../images/search-background.jpg) no-repeat center center;
-	background-size: cover;
-	width: 100%;
-	height: 250px;
-}*/
-
 .details {
 	padding-left: 10px;
 	padding-top: 15px;
@@ -53,9 +42,6 @@
 	font-size: 0.8em;
 }
 
-.rating {
-	margin-bottom: 25px;
-}
 
 /*Map*/
 #map {
