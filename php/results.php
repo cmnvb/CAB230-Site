@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php require('connectToDB.php'); ?><!DOCTYPE html>
 <html>
 <head>
 	<!-- Page Data -->
@@ -14,7 +14,7 @@
 <body>
 	<!-- Nav -->
 	<?php include('navbar.php'); ?>
-	
+
 	<main>
 		<div id="wrapper">
 			<!-- Results Header -->
@@ -27,17 +27,39 @@
 			</div>
 
 			<!-- Results List-->
-			<div id= "results">
-				<ul id="results">
-					<li>
-						<div class="details">
-							<a href="park.php"><p class="park-name">Robertson Park</p></a>
-							<p class="location">St Lucia</p>
-							<p class="rating">&#9733;&#9733;&#9733;&#9734;&#9734;</p>
-						</div>
-					</li>
-				</ul>
-			</div>
+			<ul id="results">
+			<?php
+			$resultsSearch = $pdo -> prepare("SELECT Name, Suburb, COALESCE(Rating, 0) AS Rating
+				FROM items LEFT JOIN reviews ON items.id = reviews.parkID
+				WHERE Name LIKE :nameSearch AND Suburb = :suburb
+				GROUP BY Name
+				HAVING Rating >= :rating");
+
+			$resultsSearch -> bindValue(":nameSearch", "%" . $_GET['name'] . "%");
+			$resultsSearch -> bindValue(":suburb", $_GET['suburb']);
+			$resultsSearch -> bindValue(":rating", $_GET['rating']);
+
+			$resultsSearch -> execute();
+
+			foreach ($resultsSearch as $row) {
+				$ratingString;
+				if (is_null($row["Rating"])) {
+					$ratingString = str_repeat("&#9734;", 5);
+				} else {
+					$ratingString = str_repeat("&#9733;", $row["Rating"]);
+					$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
+				}
+
+				echo '<li>
+					<div class="details">
+						<a href="park.php"><p class="park-name">' . $row["Name"] . '</p></a>
+						<p class="location">' . $row["Suburb"] . '</p>
+						<p class="rating">' . $ratingString . '</p>
+					</div>
+				</li>';
+			}
+			?>
+			</ul>
 			
 			
 			<!-- Map -->
