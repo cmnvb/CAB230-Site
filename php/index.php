@@ -26,12 +26,15 @@
 		<!-- Search Area-->
 		<div id="wrapper">
 			<form action="results.php" method="get">
+				<div id="autofind">
+					<p >Or just <input id="findme" type="submit" value="find me!" formnovalidate/></p>
+				</div>
 				<div>
 					<select id="suburb" name="suburb" oninvalid="this.setCustomValidity('A suburb must be selected.')" oninput="setCustomValidity('')" required>
 						<option value="" selected hidden>Select a suburb</option>
 						<?php
-						$suburbSearch = $pdo->query('SELECT Suburb FROM items');
-						foreach ($result as $row) {
+						$suburbSearch = $pdo->query('SELECT DISTINCT Suburb FROM items');
+						foreach ($suburbSearch as $row) {
 							echo "<option value=" . $row['Suburb'] . ">" . $row['Suburb'] . "</option>";
 						}
 						?>
@@ -54,7 +57,6 @@
 					<input type="submit" value="Search" />
 				</div>
 			</form>
-			<p id="autofind">Or just <a id="findme" href="results.php">find me!</a></p>
 		</div>
 	</main>
 
