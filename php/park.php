@@ -14,22 +14,16 @@
 
 <body>
 	<!-- Nav -->
-	<nav>
-		<a id="home" href="index.html">Brisbane Parks</a>
-		<a class="nav-element" href="signup.html">Sign up</a>
-		<a class="nav-element" href="signin.html">Log in</a>
-		<a class="nav-element" href="#">What's On</a>
-		<a class="nav-element" href="#">About</a>
-	</nav>
-
+	<?php include('navbar.php'); ?>
+	
 	<main>
 		<div id="wrapper">
 			<div id="header">
 				<div id="crumb">
-					<p><a href="index.html">Search</a>> <a href="results.html">Results</a> > Park Name</p>
+					<p><a href="index.php">Search</a>> <a href="results.php">Results</a> > Park Name</p>
 				</div>
 				<h1 id="header-text">Park Name</h1>
-				<a id="search-again" href="index.html">Search again?</a>
+				<a id="search-again" href="index.php">Search again?</a>
 			</div>
 			<div id="left-side">
 				<div id=map-image></div

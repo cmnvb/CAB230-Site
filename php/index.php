@@ -17,21 +17,15 @@
 
 <body>
 	<!-- Nav -->
-	<nav>
-		<a id="home" href="index.html">Brisbane Parks</a>
-		<a class="nav-element" href="signup.html">Sign up</a>
-		<a class="nav-element" href="signin.html">Log in</a>
-		<a class="nav-element" href="#">What's On</a>
-		<a class="nav-element" href="#">About</a>
-	</nav>
-
+	<?php include('navbar.php'); ?>
+	
 	<main>
 		<!-- Search Background-->
 		<div id="green-border"><p>Search for a park:</p></div>
 
 		<!-- Search Area-->
 		<div id="wrapper">
-			<form action="results.html" method="get">
+			<form action="results.php" method="get">
 				<div>
 					<select id="suburb" name="suburb" oninvalid="this.setCustomValidity('A suburb must be selected.')" oninput="setCustomValidity('')" required>
 						<option value="" selected hidden>Select a suburb</option>
@@ -49,18 +43,18 @@
 				<div>
 					<select name="rating">
 						<option value="" selected>All Ratings</option>
-						<option value="1">1*</option>
-						<option value="2">2*</option>
-						<option value="3">3*</option>
-						<option value="4">4*</option>
-						<option value="5">5*</option>
+						<option value="1">&#9733;</option>
+						<option value="2">&#9733;&#9733;</option>
+						<option value="3">&#9733;&#9733;&#9733;</option>
+						<option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+						<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
 					</select>
 				</div>
 				<div>
 					<input type="submit" value="Search" />
 				</div>
 			</form>
-			<p id="autofind">Or just <a id="findme" href="results.html">find me!</a></p>
+			<p id="autofind">Or just <a id="findme" href="results.php">find me!</a></p>
 		</div>
 	</main>
 
