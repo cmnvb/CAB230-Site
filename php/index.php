@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php require('connectToDB.inc'); ?><!DOCTYPE html>
 <html>
 <head>
 	<!-- Page Data -->
@@ -35,8 +35,12 @@
 				<div>
 					<select id="suburb" name="suburb" oninvalid="this.setCustomValidity('A suburb must be selected.')" oninput="setCustomValidity('')" required>
 						<option value="" selected hidden>Select a suburb</option>
-						<option value="place">place</option>
-						<option value="holder">holder</option>
+						<?php
+						$result = $pdo->query('SELECT Suburb FROM items');
+						foreach ($result as $row) {
+							echo "<option value=" . $row['Suburb'] . ">" . $row['Suburb'] . "</option>";
+						}
+						?>
 					</select>
 				</div>
 				<div>
