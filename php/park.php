@@ -14,13 +14,7 @@
 
 <body>
 	<!-- Nav -->
-	<nav>
-		<a id="home" href="index.php">Brisbane Parks</a>
-		<a class="nav-element" href="signup.php">Sign up</a>
-		<a class="nav-element" href="signin.php">Log in</a>
-		<a class="nav-element" href="#">What's On</a>
-		<a class="nav-element" href="#">About</a>
-	</nav>
+	<?php include('navbar.php'); ?>
 
 	<main>
 		<div id="wrapper">
