@@ -42,13 +42,8 @@
 			$resultsSearch -> execute();
 
 			foreach ($resultsSearch as $row) {
-				$ratingString;
-				if (is_null($row["Rating"])) {
-					$ratingString = str_repeat("&#9734;", 5);
-				} else {
-					$ratingString = str_repeat("&#9733;", $row["Rating"]);
-					$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
-				}
+				$ratingString = str_repeat("&#9733;", $row["Rating"]);
+				$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
 
 				echo '<li>
 					<div class="details">
@@ -57,6 +52,10 @@
 						<p class="rating">' . $ratingString . '</p>
 					</div>
 				</li>';
+			}
+
+			if ($resultsSearch -> rowCount() == 0) {
+				echo "<h3>No results found, please search again.</h3>";
 			}
 			?>
 			</ul>
