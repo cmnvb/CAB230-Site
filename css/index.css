@@ -80,11 +80,18 @@ input[type = submit]:hover{
 }
 
 #autofind {
-	clear:both;
+	position: absolute;
+	width: 100%;
+	top: 100%;
 	text-align: center;
 	color: white;
 }
 
 #findme{
-	color:white;
+	display: inline;
+	width: auto;
+	font-size: 1em;
+	background-color: Transparent;
+	border: none;
+	cursor:pointer;
 }
