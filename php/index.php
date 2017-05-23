@@ -30,7 +30,7 @@
 					<select id="suburb" name="suburb" oninvalid="this.setCustomValidity('A suburb must be selected.')" oninput="setCustomValidity('')" required>
 						<option value="" selected hidden>Select a suburb</option>
 						<?php
-						$suburbSearch = $pdo->query('SELECT DISTINCT Suburb FROM items');
+						$suburbSearch = $pdo->query('SELECT Suburb FROM items');
 						foreach ($result as $row) {
 							echo "<option value=" . $row['Suburb'] . ">" . $row['Suburb'] . "</option>";
 						}
@@ -38,15 +38,15 @@
 					</select>
 				</div>
 				<div>
-					<input type="search" name="name" placeholder=" Enter park name"/>
+					<input id="nameSearch" type="search" name="name" placeholder="Enter park name"/>
 				</div>
 				<div>
 					<select name="rating">
-						<option value="" selected>All Ratings</option>
-						<option value="1">&#9733;</option>
-						<option value="2">&#9733;&#9733;</option>
-						<option value="3">&#9733;&#9733;&#9733;</option>
-						<option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+						<option value="0" selected>All Ratings</option>
+						<option value="1">&#9733;&#9734;&#9734;&#9734;&#9734;</option>
+						<option value="2">&#9733;&#9733;&#9734;&#9734;&#9734;</option>
+						<option value="3">&#9733;&#9733;&#9733;&#9734;&#9734;</option>
+						<option value="4">&#9733;&#9733;&#9733;&#9733;&#9734;</option>
 						<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
 					</select>
 				</div>

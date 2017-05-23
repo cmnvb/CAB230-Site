@@ -75,6 +75,10 @@ input[type = submit]:hover{
 	color: grey;
 }
 
+#nameSearch {
+	padding-left: 5px;
+}
+
 #autofind {
 	clear:both;
 	text-align: center;
