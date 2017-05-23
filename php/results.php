@@ -29,13 +29,13 @@
 			<!-- Results List-->
 			<ul id="results">
 			<?php
-			$resultsSearch = $pdo -> prepare("SELECT Name, Suburb, COALESCE(Rating, 0) AS Rating
+			$resultsSearch = $pdo -> prepare("SELECT items.id AS id, Name, Suburb, COALESCE(Rating, 0) AS Rating
 				FROM items LEFT JOIN reviews ON items.id = reviews.parkID
 				WHERE Name LIKE :nameSearch AND Suburb = :suburb
 				GROUP BY Name
 				HAVING Rating >= :rating");
 
-			$resultsSearch -> bindValue(":nameSearch", "%" . $_GET['name'] . "%");
+			$resultsSearch -> bindValue(":nameSearch", "%" . strtoupper($_GET['name']) . "%");
 			$resultsSearch -> bindValue(":suburb", $_GET['suburb']);
 			$resultsSearch -> bindValue(":rating", $_GET['rating']);
 
@@ -52,7 +52,7 @@
 
 				echo '<li>
 					<div class="details">
-						<a href="park.php"><p class="park-name">' . $row["Name"] . '</p></a>
+						<a href="park.php?id=' . $row["id"] . '"><p class="park-name">' . $row["Name"] . '</p></a>
 						<p class="location">' . $row["Suburb"] . '</p>
 						<p class="rating">' . $ratingString . '</p>
 					</div>
