@@ -1,4 +1,4 @@
-<?php require('connectToDB.inc'); ?><!DOCTYPE html>
+<?php require('connectToDB.php'); ?><!DOCTYPE html>
 <html>
 <head>
 	<!-- Page Data -->
@@ -18,9 +18,9 @@
 <body>
 	<!-- Nav -->
 	<nav>
-		<a id="home" href="index.html">Brisbane Parks</a>
-		<a class="nav-element" href="signup.html">Sign up</a>
-		<a class="nav-element" href="signin.html">Log in</a>
+		<a id="home" href="index.php">Brisbane Parks</a>
+		<a class="nav-element" href="signup.php">Sign up</a>
+		<a class="nav-element" href="signin.php">Log in</a>
 		<a class="nav-element" href="#">What's On</a>
 		<a class="nav-element" href="#">About</a>
 	</nav>
@@ -31,12 +31,12 @@
 
 		<!-- Search Area-->
 		<div id="wrapper">
-			<form action="results.html" method="get">
+			<form action="results.php" method="get">
 				<div>
 					<select id="suburb" name="suburb" oninvalid="this.setCustomValidity('A suburb must be selected.')" oninput="setCustomValidity('')" required>
 						<option value="" selected hidden>Select a suburb</option>
 						<?php
-						$result = $pdo->query('SELECT Suburb FROM items');
+						$suburbSearch = $pdo->query('SELECT DISTINCT Suburb FROM items');
 						foreach ($result as $row) {
 							echo "<option value=" . $row['Suburb'] . ">" . $row['Suburb'] . "</option>";
 						}
@@ -60,7 +60,7 @@
 					<input type="submit" value="Search" />
 				</div>
 			</form>
-			<p id="autofind">Or just <a id="findme" href="results.html">find me!</a></p>
+			<p id="autofind">Or just <a id="findme" href="results.php">find me!</a></p>
 		</div>
 	</main>
 
