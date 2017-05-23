@@ -1,4 +1,4 @@
-<?php require('connectToDB.inc'); ?><!DOCTYPE html>
+<?php require('connectToDB.php'); ?><!DOCTYPE html>
 <html>
 <head>
 	<!-- Page Data -->
