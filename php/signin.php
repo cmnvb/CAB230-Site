@@ -17,7 +17,7 @@
 <body>
 	<!-- Nav -->
 	<?php include('navbar.php'); ?>
-	
+
 	<main>
 		<div id="wrapper">
 			<div id="crumb">

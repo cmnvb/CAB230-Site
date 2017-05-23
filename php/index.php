@@ -18,7 +18,7 @@
 <body>
 	<!-- Nav -->
 	<?php include('navbar.php'); ?>
-	
+
 	<main>
 		<!-- Search Background-->
 		<div id="green-border"><p>Search for a park:</p></div>
@@ -30,7 +30,7 @@
 					<select id="suburb" name="suburb" oninvalid="this.setCustomValidity('A suburb must be selected.')" oninput="setCustomValidity('')" required>
 						<option value="" selected hidden>Select a suburb</option>
 						<?php
-						$result = $pdo->query('SELECT Suburb FROM items');
+						$suburbSearch = $pdo->query('SELECT DISTINCT Suburb FROM items');
 						foreach ($result as $row) {
 							echo "<option value=" . $row['Suburb'] . ">" . $row['Suburb'] . "</option>";
 						}
