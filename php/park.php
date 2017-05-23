@@ -1,4 +1,22 @@
-<!DOCTYPE html>
+<?php require('connectToDB.php'); 
+
+$parkFetch = $pdo -> prepare("SELECT Name, Suburb, Street, AVG(COALESCE(Rating, 0)) AS Rating
+	FROM items LEFT JOIN reviews ON items.id = reviews.parkID
+	WHERE items.id = :parkID
+	GROUP BY items.id");
+$parkFetch -> bindValue(":parkID", $_GET['id']);
+$parkFetch -> execute();
+
+$parkName = $suburb = $street = $ratingString = "";
+
+foreach ($parkFetch as $row) {
+	$parkName = $row['Name'];
+	$suburb = $row['Suburb'];
+	$street = $row['Street'];
+	$ratingString = str_repeat("&#9733;", $row["Rating"]);
+	$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
+}
+?><!DOCTYPE html>
 <html>
 <head>
 	<!-- Page Data -->
@@ -20,18 +38,18 @@
 		<div id="wrapper">
 			<div id="header">
 				<div id="crumb">
-					<p><a href="index.php">Search</a>> <a href="results.php">Results</a> > Park Name</p>
+					<p><a href="index.php">Search</a> > <a href="results.php">Results</a> > <?php echo $parkName ?></p>
 				</div>
-				<h1 id="header-text">Park Name</h1>
+				<h1 id="header-text"><?php echo $parkName ?></h1>
 				<a id="search-again" href="index.php">Search again?</a>
 			</div>
 			<div id="left-side">
 				<div id=map-image></div
 				<!-- overall rating -->
 				<div id= "park-content">
-					<h1>&#9733;&#9733;&#9733;&#9733;&#9734;</h1>
-					<h2>Suburb</h2>
-					<h3>Street</h3>
+					<h1><?php echo $ratingString ?></h1>
+					<h2><?php echo $suburb ?></h2>
+					<h3><?php echo $street ?></h3>
 				</div>
 			</div>
 			
