@@ -31,7 +31,7 @@
 						<option value="" selected hidden>Select a suburb</option>
 						<?php
 						$suburbSearch = $pdo->query('SELECT Suburb FROM items');
-						foreach ($result as $row) {
+						foreach ($suburbSearch as $row) {
 							echo "<option value=" . $row['Suburb'] . ">" . $row['Suburb'] . "</option>";
 						}
 						?>
