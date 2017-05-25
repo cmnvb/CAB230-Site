@@ -25,7 +25,7 @@
 					<div id="header">
 						<h1 id="header-text">Create An Account</h1>
 					</div>
-					<form id="registration-form" action="index.php" method="post">
+					<form id="registration-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 	
 						<input type="text" name="username" placeholder="Username" required/><hr>
 					
@@ -36,18 +36,22 @@
 						<input id="DOB" type="date" name="bday" placeholder="Date of Birth dd/mm/yy" onchange="this.style.color = 'black'" required/><hr>
 						
 						<select id="suburb" name="suburb" required>
-							<option value="" selected hidden>Select A Suburb</option>
-							<option value="place">place</option>
-							<option value="holder">holder</option>
+						<option value="" selected hidden>Select a suburb</option>
+						<?php
+						$suburbSearch = $pdo->query('SELECT DISTINCT Suburb FROM items');
+						foreach ($suburbSearch as $row) {
+							echo "<option value=" . $row['Suburb'] . ">" . $row['Suburb'] . "</option>";
+						}
+						?>
 						</select><hr>
 						
-						<input type="text" name="password" placeholder="Insert Password" title="Password must be contain at least 4 characters and include a capital letter" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}" onchange="form.passwordConfirm.pattern = this.value;" required/><hr>
+						<input type="password" name="password" placeholder="Insert Password" title="Password must be contain at least 4 characters and include a capital letter" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}" onchange="form.passwordConfirm.pattern = this.value;" required/><hr>
 						
-						<input type="text" name="passwordConfirm" placeholder="Confirm Password" title="Must match entered password" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}" required/><hr>
+						<input type="password" name="passwordConfirm" placeholder="Confirm Password" title="Must match entered password" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}" required/><hr>
 						<br>
 						
 						<input type="submit" value="Send" />
-						<?php include('validatesignupform.php'); ?>
+						<?php include('validatesignupform.php');?>
 					</form>
 				</div>
 			</div>
