@@ -23,19 +23,29 @@
 /*Result List*/
 #results{
 	width:50%;
-	height: 100%;
+	height: 95%;
 	float: left;
 	overflow: auto;
 	display:block;
 }
-
-.details {
-	padding-left: 10px;
-	padding-top: 15px;
+#results > li{
+	color: black;
 }
 
-.park-name {
+.details {
+	padding: 15px 0px 5px 10px;
+}
+
+.park-name{
 	font-size: 1.3em;
+	color: #0D2818;
+}
+.park-name a{
+	text-decoration: none;
+}
+
+.park-name:hover{
+	color: #7ea172;
 }
 
 .location {
@@ -46,7 +56,7 @@
 /*Map*/
 #map {
 	width: 50%;
-	height: 100%;
+	height: 95%;
 	float: right;
 	background-color: black;
 }

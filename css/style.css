@@ -20,6 +20,10 @@ body{
 	background:url(../images/tree_bark.png);
 }
 
+p{
+	text-decoration: none;
+}
+
 /*Nav Styling*/
 nav {
 	min-width: 1024px;
@@ -82,11 +86,16 @@ footer {
 	right: 0;
 	bottom: 0;
 	left: 0;
+	display: block;
+	height: 5%;
+	width: 100%;
+}
+footer > p{
+		background-color: #0D2818;
+		color: white;
+		font-size: 0.9em;
 }
 
-footer p {
-	float: right;
-}
 
 /*Global Styling*/
 #wrapper {

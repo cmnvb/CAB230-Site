@@ -28,10 +28,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt ->bindParam(':salt', $salt);
     $stmt -> execute();
   
-    echo ("success message");
+    echo ("<br> Account Creation Successful");
   }
   catch(PDOException $e) {
-    echo("$username") .$e->getMessage();
+    echo("Please Try Again") .$e->getMessage();
   }
 }
 $stmt = null;

@@ -20,7 +20,7 @@
 			<!-- Results Header -->
 			<div id="header">
 				<div id="crumb">
-					<p><a href="index.php">Search</a> > Results page</p>
+					<p><a href="index.php">Search</a> > Results</p>
 				</div>
 				<h1 id="header-text">Top Results</h1>
 				<a id="search-again" href="index.php">Search again?</a>
@@ -45,7 +45,7 @@
 				$ratingString = str_repeat("&#9733;", $row["Rating"]);
 				$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
 
-				echo '<li>
+				echo '<hr><li>
 					<div class="details">
 						<a href="park.php?id=' . $row["id"] . '"><p class="park-name">' . $row["Name"] . '</p></a>
 						<p class="location">' . $row["Suburb"] . '</p>
@@ -65,9 +65,5 @@
 			<div id="map"></div>
 		</div>
 	</main>
-
-	<!-- Footer -->
-	<footer>
-	</footer>
 </body>
 </html>

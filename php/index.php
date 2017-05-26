@@ -59,9 +59,5 @@
 			</form>
 		</div>
 	</main>
-
-	<!-- Footer -->
-	<footer>
-	</footer>
 </body>
 </html>

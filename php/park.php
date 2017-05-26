@@ -55,12 +55,14 @@ foreach ($parkFetch as $row) {
 			
 			<!-- Reviews -->
 			<ul id=review>
+				<!-- have the  comments disabled until user logs in-->
 				<li><h2>Reviews</h2></li>
 				<li>
 					<div id="leave-review">
 						<h3>Leave a Review:</h3>
 						<form id= "review-form" method="post">
 							<input type="text" id="username" name="username" placeholder="Username" required/>
+							<!--try and prefill this with the users information-->
 							<select id="stars" required/>
 								<option value="" selected hidden>Select A Rating</option>
 								<option value="1">&#9733;</option>
@@ -84,72 +86,8 @@ foreach ($parkFetch as $row) {
 						<p> This park was great</p>
 					</div>
 				</li>
-				<li>
-					<div id= "user-information">
-						<p class= "username">User Name</p>
-						<p class= "rating">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-						<p class= "Date">Date</p>
-					</div>
-					<div id="user-review">
-						<p> This park was great</p>
-					</div>
-				</li>
-				<li>
-					<div id= "user-information">
-						<p class= "username">User Name</p>
-						<p class= "rating">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-						<p class= "Date">Date</p>
-					</div>
-					<div id="user-review">
-						<p> This park was great</p>
-					</div>
-				</li>
-				<li>
-					<div id= "user-information">
-						<p class= "username">User Name</p>
-						<p class= "rating">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-						<p class= "Date">Date</p>
-					</div>
-					<div id="user-review">
-						<p> This park was great</p>
-					</div>
-				</li>
-				<li>
-					<div id= "user-information">
-						<p class= "username">User Name</p>
-						<p class= "rating">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-						<p class= "Date">Date</p>
-					</div>
-					<div id="user-review">
-						<p> This park was great</p>
-					</div>
-				</li>
-				<li>
-					<div id= "user-information">
-						<p class= "username">User Name</p>
-						<p class= "rating">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-						<p class= "Date">Date</p>
-					</div>
-					<div id="user-review">
-						<p> This park was great</p>
-					</div>
-				</li>
-				<li>
-					<div id= "user-information">
-						<p class= "username">User Name</p>
-						<p class= "rating">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-						<p class= "Date">Date</p>
-					</div>
-					<div id="user-review">
-						<p> This park was great</p>
-					</div>
-				</li>
 			</ul>
 		</div>
 	</main>
-
-	<!-- Footer -->
-	<footer>
-	</footer>
 </body>
 </html>
