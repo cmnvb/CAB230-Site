@@ -1,3 +1,7 @@
+	<?php
+   session_start();
+?>
+
 	<!-- Nav -->
 	<nav>
 		<a id="home" href="index.php">Brisbane Parks</a>
@@ -6,8 +10,8 @@
 	</nav>
 	
 		<!-- Footer -->
-	<div id="footer">
+	<!--<div id="footer">
 		<footer>
 			<p>&#169; Patrick Kim and Anna Clatworthy: CAB230 Assignment 2</p>
 		</footer>
-	</div>
+	</div>-->

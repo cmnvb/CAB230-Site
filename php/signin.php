@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+<?php require('connectToDB.php');
+	  require('validatePassword.php');
+
+if (isset($_POST['signin']) && !empty($_POST['username']) 
+   && !empty($_POST['password'])) {
+	
+   if (validatePassword($_POST['username'], $_POST['password'])){
+	  echo 'You have entered valid username and password';
+	  start_session();
+	  $_SESSION['LoggedIn'] = true;
+
+   }else {
+	  echo 'Wrong username or password';
+   }
+}
+?>
 <html>
 <head>
 	<!-- Page Data -->
@@ -25,10 +40,11 @@
 			</div>
 			<div id="header">
 				<h1 id="header-text">Log In To Your Account</h1></div>
-			<form id="registration-form" action="index.php" method="post">
+	
+			<form id="registration-form" method="post" action = "signin.php">
 				<input type="text" name="username" placeholder="Username" required/><hr>
-				<input type="text" name="password" placeholder="Insert Password" required/><hr>
-				<input type="submit" value="Sign In" />
+				<input type="password" name="password" placeholder="Insert Password" required/><hr>
+				<button type = "submit" name = "signin" value= "Signin">Sign in</button>
 			</form>
 		</div>
 	</main>

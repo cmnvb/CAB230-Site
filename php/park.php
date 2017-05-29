@@ -60,19 +60,20 @@ foreach ($parkFetch as $row) {
 				<li>
 					<div id="leave-review">
 						<h3>Leave a Review:</h3>
-						<form id= "review-form" method="post">
+						<form id= "review-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 							<input type="text" id="username" name="username" placeholder="Username" required/>
 							<!--try and prefill this with the users information-->
-							<select id="stars" required/>
+							<select id="rating" name= "rating" required/>
 								<option value="" selected hidden>Select A Rating</option>
-								<option value="1">&#9733;</option>
-								<option value="2">&#9733;&#9733;</option>
-								<option value="3">&#9733;&#9733;&#9733;</option>
-								<option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+								<option value="1">&#9733;&#9734;&#9734;&#9734;&#9734;</option>
+								<option value="2">&#9733;&#9733;&#9734;&#9734;&#9734;</option>
+								<option value="3">&#9733;&#9733;&#9733;&#9734;&#9734;</option>
+								<option value="4">&#9733;&#9733;&#9733;&#9733;&#9734;</option>
 								<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
 							</select><br>
 							<textarea id="comment" name="comment" placeholder="Leave A Comment" required/></textarea><br>
 							<input type="submit" value="Send" />
+							<?php include('validatecomment.php');?>
 						</form>
 					</div>
 				</li><hr>

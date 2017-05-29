@@ -50,7 +50,7 @@
 						<input type="password" name="passwordConfirm" placeholder="Confirm Password" title="Must match entered password" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}" required/><hr>
 						<br>
 						
-						<input type="submit" value="Send" />
+						<button type = "submit" name = "createaccount" value= "CreateAccount" id= "submit">Create Account</button>
 						<?php include('validatesignupform.php');?>
 					</form>
 				</div>

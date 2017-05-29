@@ -1,5 +1,6 @@
 <?php require('connectToDB.php'); 
 $username = $email = $children= $bday = $suburb = $password = "";
+$usernameErr ="";
 
 function validate($data) {
   $data = trim($data);
@@ -9,7 +10,12 @@ function validate($data) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $username = validate($_POST["username"]);
+ if (empty($_POST["username"])) {
+ $usernameErr = "Username is required";
+} else {
+ $username = validate($_POST["username"]);
+}
+
   $email = validate($_POST["email"]);
   $children = validate($_POST["children"]);
   $bday = validate($_POST["bday"]);
