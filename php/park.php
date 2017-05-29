@@ -58,24 +58,27 @@ foreach ($parkFetch as $row) {
 				<!-- have the  comments disabled until user logs in-->
 				<li><h2>Reviews</h2></li>
 				<li>
-					<div id="leave-review">
+				<?php include('validatecomment.php');
+				if (isset($_SESSION['valid'] ){
+					echo "<div id='leave-review'>
 						<h3>Leave a Review:</h3>
-						<form id= "review-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-							<input type="text" id="username" name="username" placeholder="Username" required/>
-							<!--try and prefill this with the users information-->
-							<select id="rating" name= "rating" required/>
+						<form id= 'review-form' method='post' action= 'htmlspecialchars($_SERVER['PHP_SELF'])'>
+							<p>You are logged in as $username</p>
+							<select id='rating' name= 'rating' required/>
 								<option value="" selected hidden>Select A Rating</option>
-								<option value="1">&#9733;&#9734;&#9734;&#9734;&#9734;</option>
-								<option value="2">&#9733;&#9733;&#9734;&#9734;&#9734;</option>
-								<option value="3">&#9733;&#9733;&#9733;&#9734;&#9734;</option>
-								<option value="4">&#9733;&#9733;&#9733;&#9733;&#9734;</option>
-								<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+								<option value='1'>&#9733;&#9734;&#9734;&#9734;&#9734;</option>
+								<option value='2'>&#9733;&#9733;&#9734;&#9734;&#9734;</option>
+								<option value='3'>&#9733;&#9733;&#9733;&#9734;&#9734;</option>
+								<option value='4'>&#9733;&#9733;&#9733;&#9733;&#9734;</option>
+								<option value='5'>&#9733;&#9733;&#9733;&#9733;&#9733;</option>
 							</select><br>
-							<textarea id="comment" name="comment" placeholder="Leave A Comment" required/></textarea><br>
-							<input type="submit" value="Send" />
-							<?php include('validatecomment.php');?>
+							<textarea id='comment' name='comment' placeholder='Leave A Comment' required/></textarea><br>
+							<input type='submit' value='Send' />
 						</form>
-					</div>
+					</div>"
+				};
+					;?>
+				
 				</li><hr>
 				<li>
 					<div id= "user-information">

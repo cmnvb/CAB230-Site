@@ -23,6 +23,21 @@ body{
 p{
 	text-decoration: none;
 }
+a:link, a:visited{
+	color:#0D2818;
+}
+a:link:hover, a:visited:hover{
+	color:#7ea172;
+}
+
+a{
+	text-decoration: none;
+}
+hr{
+    height: 1px;
+	background: grey;
+}
+
 
 /*Nav Styling*/
 nav {
@@ -34,6 +49,17 @@ nav {
 	width: 100%;
 	background-color: #0D2818; /*a darkish green #0D2818*/
 	height: 40px;
+}
+nav > a {
+	height: 40px;
+	line-height: 40px;
+	color: white;
+}
+nav > a:link, nav > a:visited{
+	color: white;
+}
+nav > a:link:hover,nav > a:visited:hover{
+	color: white;
 }
 
 #home {
@@ -72,12 +98,6 @@ nav {
 	transition: all 1s ease;
 }
 
-nav a {
-	height: 40px;
-	line-height: 40px;
-	color: white;
-	text-decoration: none;
-}
 
 /*Footer Styling*/
 footer {
@@ -92,7 +112,8 @@ footer {
 footer > p{
 		background-color: #0D2818;
 		color: white;
-		font-size: 0.9em;
+		font-size: 0.7em;
+		text-align: center;
 }
 
 

@@ -31,6 +31,9 @@
 #results > li{
 	color: black;
 }
+#results > li:hover{
+	background-color: #f3f3f3;
+}
 
 .details {
 	padding: 15px 0px 5px 10px;
@@ -38,14 +41,6 @@
 
 .park-name{
 	font-size: 1.3em;
-	color: #0D2818;
-}
-.park-name a{
-	text-decoration: none;
-}
-
-.park-name:hover{
-	color: #7ea172;
 }
 
 .location {

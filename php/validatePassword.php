@@ -12,6 +12,6 @@ function validatePassword(){
 
 	$checkPassword -> execute();
 
-	//return $query->rowCount() > 0;
+	return $checkPassword->rowCount() > 0;
 }
 ?>

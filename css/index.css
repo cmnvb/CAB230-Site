@@ -95,3 +95,6 @@ input[type = submit]:hover{
 	border: none;
 	cursor:pointer;
 }
+#findme:hover{
+	color:#7ea172;
+}
