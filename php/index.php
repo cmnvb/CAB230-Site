@@ -25,12 +25,12 @@
 
 		<!-- Search Area-->
 		<div id="wrapper">
-			<form action="results.php" method="get">
+			<form name="search" action="results.php" method="get">
 				<div id="autofind">
-					<p >Or just <input id="findme" type="submit" value="find me!" formnovalidate/></p>
+					<p >Or just <input id="findme" type="submit" value="find me!" onclick="returnPosition();" formnovalidate/></p>
 				</div>
 				<div>
-					<select id="suburb" name="suburb" oninvalid="this.setCustomValidity('A suburb must be selected.')" oninput="setCustomValidity('')" required>
+					<select id="suburb" name="suburb">
 						<option value="" selected hidden>Select a suburb</option>
 						<?php
 						$suburbSearch = $pdo->query('SELECT DISTINCT Suburb FROM items');
@@ -53,11 +53,17 @@
 						<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
 					</select>
 				</div>
+				<input id="lat" type="hidden" name="latitude" value=''>
+				<input id="lon" type="hidden" name="longitude" value=''>
 				<div>
 					<input type="submit" value="Search" />
 				</div>
 			</form>
 		</div>
 	</main>
+
+	<!-- Footer -->
+	<footer>
+	</footer>
 </body>
 </html>
