@@ -64,15 +64,13 @@
 	display: table-cell;
 	
 }
-#map-image{
+#map{
 	float: left;
-	background: url(../images/map.png) no-repeat center center;
-	background-size: cover;
 	width: 100%;
 	height: 300px;
 	
 }
 #park-content{
 	float:left;
-	position: relative;		
+	position: relative;
 }

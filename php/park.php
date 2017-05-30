@@ -1,6 +1,6 @@
 <?php require('connectToDB.php'); 
 
-$parkFetch = $pdo -> prepare("SELECT Name, Suburb, Street, AVG(COALESCE(Rating, 0)) AS Rating
+$parkFetch = $pdo -> prepare("SELECT Name, Suburb, Street, AVG(COALESCE(Rating, 0)) AS Rating, Latitude, Longitude
 	FROM items LEFT JOIN reviews ON items.id = reviews.parkID
 	WHERE items.id = :parkID
 	GROUP BY items.id");
@@ -15,6 +15,8 @@ foreach ($parkFetch as $row) {
 	$street = $row['Street'];
 	$ratingString = str_repeat("&#9733;", $row["Rating"]);
 	$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
+	$lat = $row['Latitude'];
+	$lon = $row['Longitude'];
 }
 ?><!DOCTYPE html>
 <html>
@@ -44,7 +46,42 @@ foreach ($parkFetch as $row) {
 				<a id="search-again" href="index.php">Search again?</a>
 			</div>
 			<div id="left-side">
-				<div id=map-image></div
+				<div id = "map">
+				<script>
+				/* Function for adding park marker */
+				function initMap() {
+					var bounds = new google.maps.LatLngBounds();
+					var parkMap = new google.maps.Map(document.getElementById('map'), {
+						zoom: 1
+					});
+
+					// Add marker for park
+					var parkInfo = new google.maps.InfoWindow({
+						<?php echo "content: '$parkName'" ?>
+					});
+
+					var markerObject = new google.maps.Marker({
+						<?php echo "position: new google.maps.LatLng(parseFloat($lat), parseFloat($lon))," ?>
+						map: parkMap,
+						<?php "title: '$parkName'," ?>
+						infowindow: parkInfo
+					});
+
+					// Add click listener to display info window
+					google.maps.event.addListener(markerObject, 'click', function() {
+							this.infowindow.open(parkMap, this);
+					});
+
+					bounds.extend(markerObject.position);
+
+					parkMap.fitBounds(bounds);
+				}
+				</script>
+				<script async defer
+				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp8B74RCtcjM6j6sfn3JBF8kvBlhsXJ7Y&callback=initMap&sensor=false">
+				</script>
+				</div>
+
 				<!-- overall rating -->
 				<div id= "park-content">
 					<h1><?php echo $ratingString ?></h1>
@@ -58,27 +95,24 @@ foreach ($parkFetch as $row) {
 				<!-- have the  comments disabled until user logs in-->
 				<li><h2>Reviews</h2></li>
 				<li>
-				<?php include('validatecomment.php');
-				if (isset($_SESSION['valid'] ){
-					echo "<div id='leave-review'>
+					<div id="leave-review">
 						<h3>Leave a Review:</h3>
-						<form id= 'review-form' method='post' action= 'htmlspecialchars($_SERVER['PHP_SELF'])'>
-							<p>You are logged in as $username</p>
-							<select id='rating' name= 'rating' required/>
+						<form id= "review-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+							<input type="text" id="username" name="username" placeholder="Username" required/>
+							<!--try and prefill this with the users information-->
+							<select id="rating" name= "rating" required/>
 								<option value="" selected hidden>Select A Rating</option>
-								<option value='1'>&#9733;&#9734;&#9734;&#9734;&#9734;</option>
-								<option value='2'>&#9733;&#9733;&#9734;&#9734;&#9734;</option>
-								<option value='3'>&#9733;&#9733;&#9733;&#9734;&#9734;</option>
-								<option value='4'>&#9733;&#9733;&#9733;&#9733;&#9734;</option>
-								<option value='5'>&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+								<option value="1">&#9733;&#9734;&#9734;&#9734;&#9734;</option>
+								<option value="2">&#9733;&#9733;&#9734;&#9734;&#9734;</option>
+								<option value="3">&#9733;&#9733;&#9733;&#9734;&#9734;</option>
+								<option value="4">&#9733;&#9733;&#9733;&#9733;&#9734;</option>
+								<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
 							</select><br>
-							<textarea id='comment' name='comment' placeholder='Leave A Comment' required/></textarea><br>
-							<input type='submit' value='Send' />
+							<textarea id="comment" name="comment" placeholder="Leave A Comment" required/></textarea><br>
+							<input type="submit" value="Send" />
+							<?php include('validatecomment.php');?>
 						</form>
-					</div>"
-				};
-					;?>
-				
+					</div>
 				</li><hr>
 				<li>
 					<div id= "user-information">
