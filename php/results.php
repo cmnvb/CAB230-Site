@@ -91,17 +91,24 @@ session_start();
 				<script>
 				/* Function for adding markers using search parameters */
 				function initMap() {
-					<?php echo "var markersJSON = $PHPtoJSON;";?>
+					<?php try {
+						echo "var markersJSON = $PHPtoJSON;";
+					} catch (Exception $e) {} ?>
 
 					var bounds = new google.maps.LatLngBounds();
 					var parksMap = new google.maps.Map(document.getElementById('map'), {
 						zoom: 1
 					});
 
+
 					// Add markers from data
 					for (var i = 0; i < markersJSON.length; i++) {
+					 var star = "&#9733;".repeat(parseInt(markersJSON[i]["Rating"])) + "&#9734;".repeat(parseInt(5 - markersJSON[i]["Rating"]))
 						var parkInfo = new google.maps.InfoWindow({
-							content: markersJSON[i]["Name"]
+							content: "<a href='park.php?id=" + markersJSON[i]["id"] + "'><p class='park-name'>" + markersJSON[i]["Name"] + "</p></a>" +
+							"<p class='location'>" + markersJSON[i]["Suburb"] + "</p>" +
+							"<p class='rating'>" + star + "</p>" +
+							"</div>"
 						});
 
 						var markerObject = new google.maps.Marker({
