@@ -5,7 +5,7 @@ body{
 }
 
 /*---------------------Search Background---------------------*/
-#green-border{
+#green-border {
 	background-color: #0D2818;
 	opacity: 0.85;
 	width: 70%;
@@ -18,7 +18,7 @@ body{
 	position: absolute;
 }
 
-#green-border > p{
+#green-border > p {
 	position: relative;
 	text-align: left;
 	vertical-align: top;
@@ -95,6 +95,7 @@ input[type = submit]:hover{
 	border: none;
 	cursor:pointer;
 }
+
 #findme:hover{
 	color:#7ea172;
 }

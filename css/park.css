@@ -4,7 +4,8 @@
 	width: 50%;
 	height: 100%;
 }
-#right-side{
+
+#right-side {
 	width: 50%;
 	height: 100%;
 	float: right;
@@ -14,45 +15,54 @@
 	overflow-y: auto;
 }
 /*---------------------Maps (Left Side)---------------------*/
-#map{
+#map {
 	float: left;
 	width: 100%;
 	height: 300px;
-	
 }
-#park-content{
+
+#park-content {
 	float:left;
 	position: relative;
 }
+
 /*---------------------Reviews (Right Side)---------------------*/
-#leave-review{
+#leave-review {
 	width: 100%;
 	padding-bottom:15px;
 	margin-bottom:5px;
 }
-#leave-review input, select, textarea{
+
+#leave-review input, select, textarea {
 	margin-bottom: 10px;
 	font-size: inherit;
 }
-#comment{
+
+#rating {
+	color: grey;
+}
+
+#rating > option {
+	color: black;
+}
+#comment {
 	width:100%;
 	height: 50px;
 	vertical-align: top;
 	font: inherit;
-	
 }
-#review > li{
+
+#review > li {
 	width: 100%;
 	display: table-row;
 }
 
-#user-information{
+#user-information {
 	display:table-cell;
 	width:40%;
 }
-#user-review{
+#user-review {
 	width:60%;
 	padding: 1em;
 	display: table-cell;
-	
 }

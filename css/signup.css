@@ -2,10 +2,12 @@
 #wrapper{
 	padding:40px 10px 0 10px;
 }
+
 #header-text{
 	text-align: center;
 	margin-bottom: 45px;
 }
+
 #suburb {
 	color: grey;
 }
@@ -17,6 +19,6 @@
 }
 
 #registration-form >input, #registration-form > select{
-    padding: 7px;
-    margin-bottom: 15px;
+	padding: 7px;
+	margin-bottom: 15px;
 }

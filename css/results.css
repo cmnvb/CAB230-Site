@@ -1,15 +1,17 @@
 /*---------------------Results---------------------*/
-#results{
+#results {
 	width:50%;
 	height: 95%;
 	float: left;
 	overflow: auto;
 	display:block;
 }
-#results > li{
+
+#results > li {
 	color: black;
 }
-#results > li:hover{
+
+#results > li:hover {
 	background-color: #f3f3f3;
 }
 
@@ -17,14 +19,13 @@
 	padding: 15px 0px 5px 10px;
 }
 
-.park-name{
+.park-name {
 	font-size: 1.3em;
 }
 
 .location {
 	font-size: 0.8em;
 }
-
 
 /*Map*/
 #map {

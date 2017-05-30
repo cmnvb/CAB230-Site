@@ -33,7 +33,7 @@ session_start();
 			<?php
 			if (isset($_GET['latitude']) || isset($_GET['suburb'])) {
 				if ($_GET['latitude'] != '' && $_GET['longitude'] != '') {
-					$resultsSearch = $pdo -> prepare("SELECT items.id AS id, Name, Street, Suburb, AVG(COALESCE(Rating, 0)) AS Rating,
+					$resultsSearch = $pdo -> prepare("SELECT items.id AS id, Name, Street, Suburb, ROUND(AVG(COALESCE(Rating, 0))) AS Rating,
 						( 6371 * acos( cos( radians(:userLatitide1) ) * cos( radians( Latitude ) ) * cos( radians( Longitude ) - radians(:userLongitude) ) + sin( radians(:userLatitide2) ) * sin( radians( Latitude ) ) ) ) AS distance, Latitude, Longitude
 						FROM items LEFT JOIN reviews ON items.id = reviews.parkID
 						GROUP BY Name
