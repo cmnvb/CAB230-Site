@@ -11,7 +11,7 @@ if (isset($_POST['signin']) && !empty($_POST['username'])
 	$_SESSION['timeout'] = time();
 	$_SESSION['username'] = $_POST['username'];
 	$msg ="Successfully Logged In";
-	header("Location: http://localhost:1234/CAB230-Site/php/index.php");
+	header("Location: http://{$_SERVER['HTTP_HOST']}/index.php");
 	exit();
 
    }else {

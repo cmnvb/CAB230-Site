@@ -56,22 +56,18 @@
 							echo '<input id="DOB" type="date" name="bday" placeholder="Date of Birth dd/mm/yy" onchange="this.style.color = "black"  value="' . $prefill . '" required/>';
 							
 							if (isset($_POST['suburb'])){
-								$prefill = htmlspecialchars($_POST['suburb]);
+								$prefill = htmlspecialchars($_POST['suburb']);
 							}else{
 								$prefill = "";
 							}
+							echo '<select id="suburb" name="suburb" required/>
+								  <option value="' . $prefill . '" selected hidden>Select a suburb</option>';
+							$suburbSearch = $pdo->query('SELECT DISTINCT Suburb FROM items');
+							foreach ($suburbSearch as $row) {
+								  echo "<option value=" . $row['Suburb'] . ">" . $row['Suburb'] . "</option>";
+							}
+							echo '</select>'
 						?>
-						
-						
-						<select id="suburb" name="suburb" required>
-						<option value="" selected hidden>Select a suburb</option>
-						<?php
-						$suburbSearch = $pdo->query('SELECT DISTINCT Suburb FROM items');
-						foreach ($suburbSearch as $row) {
-							echo "<option value=" . $row['Suburb'] . ">" . $row['Suburb'] . "</option>";
-						}
-						?>
-						</select>
 						
 						<input type="password" name="password" placeholder="Insert Password" title="Password must be contain at least 4 characters and include a capital letter" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}" onchange="form.passwordConfirm.pattern = this.value;" required/>
 						
