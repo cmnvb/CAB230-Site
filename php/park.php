@@ -91,30 +91,8 @@ foreach ($parkFetch as $row) {
 			</div>
 			
 			<!-- Reviews -->
-				<div id= "right-side"><h2>Reviews</h2>
-				<?php include('validatecomment.php');
-				if (isset($_SESSION['signedin'])){
-					echo '<div id="leave-review">
-						<form id= "review-form" method="post" action="'. htmlspecialchars($_SERVER['PHP_SELF']) . "?id=" . $_GET['id'] . '"/>
-							<h3>Leave a Review:</h3>
-							<p>You are logged in as: ',  $_SESSION['username'], '</p>
-							<select id="rating" name= "rating" required/>
-								<option selected hidden>Select A Rating</option>
-								<option value="0">&#9734;&#9734;&#9734;&#9734;&#9734;</option>
-								<option value="1">&#9733;&#9734;&#9734;&#9734;&#9734;</option>
-								<option value="2">&#9733;&#9733;&#9734;&#9734;&#9734;</option>
-								<option value="3">&#9733;&#9733;&#9733;&#9734;&#9734;</option>
-								<option value="4">&#9733;&#9733;&#9733;&#9733;&#9734;</option>
-								<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
-							</select><br>
-							<textarea id="comment" name="comment" placeholder="Leave A Comment" required/></textarea><br>
-							<button type = "submit" name = "leavereview" value= "leavereview">Submit Review</button>
-						</form>
-					</div>';
-				}
-					?>
-				<hr>
-			
+				<div id= "right-side">
+				<h2>Reviews</h2>
 				<ul id=review>
 			
 				<?php
@@ -130,7 +108,7 @@ foreach ($parkFetch as $row) {
 						<div id= "user-information">
 							<p itemprop="author">' . $row["Username"] . '</p>
 							<p><span itemprop="reviewRating" content="' . $row["Rating"] . '" />' . $ratingString . '</p>
-							<p><meta itemprop="datePublished" content="' . date('Y-m-d',strtotime($row["DatePosted"])) . '"' . $row["DatePosted"] . '</p>
+							<p><meta itemprop="datePublished" content="' . date('Y-m-d',strtotime($row["DatePosted"])) . '">' . $row["DatePosted"] . '</p>
 						</div>
 						<div id="user-review">
 							<p itemprop="reviewBody">' . $row["Comment"] . '</p>
@@ -138,6 +116,29 @@ foreach ($parkFetch as $row) {
 					</li>';
 				}
 				?>
+
+				<hr>
+				
+				<?php include('validatecomment.php');
+				if (isset($_SESSION['signedin'])){
+					echo '<div id="leave-review">
+						<form id= "review-form" method="post" action="'. htmlspecialchars($_SERVER['PHP_SELF']) . "?id=" . $_GET['id'] . '"/>
+							<h3>Leave a Review:</h3>
+							<select id="rating" name= "rating" required/>
+								<option selected hidden>Select A Rating</option>
+								<option value="0">&#9734;&#9734;&#9734;&#9734;&#9734;</option>
+								<option value="1">&#9733;&#9734;&#9734;&#9734;&#9734;</option>
+								<option value="2">&#9733;&#9733;&#9734;&#9734;&#9734;</option>
+								<option value="3">&#9733;&#9733;&#9733;&#9734;&#9734;</option>
+								<option value="4">&#9733;&#9733;&#9733;&#9733;&#9734;</option>
+								<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+							</select><br>
+							<textarea id="comment" name="comment" placeholder="Leave A Comment" required/></textarea><br>
+							<button type = "submit" name = "leavereview" value= "leavereview">Submit Review</button>
+						</form>
+					</div>';
+				}
+					?>
 			</ul>
 			</div>
 		</div>
