@@ -1,6 +1,6 @@
 <?php require('connectToDB.php'); 
 $username = $email = $children= $bday = $suburb = $password = "";
-$usernameErr ="";
+$usernameErr = $emailErr =$childrenErr = $bdayErr = $passwordErr = "";
 
 function validate($data) {
   $data = trim($data);
@@ -9,9 +9,16 @@ function validate($data) {
   return $data;
 }
 
+function processSubmit(){
+  global $pdo;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $searchUsernames = $pdo->prepare('SELECT username FROM members');
+  $searchUsernames ->execute();
+  
  if (empty($_POST["username"])) {
- $usernameErr = "Username is required";
+ $usernameErr = "Username is required. ";
+ }if ($searchUsernames->rowCount() > 0) {
+  $usernameErr = "Username Taken, Please choose another. ";
 } else {
  $username = validate($_POST["username"]);
 }
@@ -37,13 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo ("<br> Account Creation Successful");
   }
   catch(PDOException $e) {
-        //echo('<script language = "javascript">');
-        echo('Please Try Again') //. $e->getMessage();
-        //echo('</script>');
-        
-        //echo('<script language = "javascript">');
-        //echo('alert(Please Try Again)'); //.$e->getMessage();
-        //echo('</script>');
+        echo ($usernameErr ) . $e->getMessage();
+  }
   }
 }
 $stmt = null;

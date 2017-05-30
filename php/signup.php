@@ -27,13 +27,16 @@
 					<form id="registration-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 						<h1 id="header-text">Create An Account</h1>
 						<?php
+							 include('validatesignupform.php');
+							//username prefill and form
 							if (isset($_POST['username'])){
 								$prefill = htmlspecialchars($_POST['username']);
 							}else{
 								$prefill = "";
 							}
 							echo '<input type="text" name="username" placeholder="Username" value="' . $prefill . '" required/>';
-							
+							 
+							//email prefill and form
 							if (isset($_POST['email'])){
 								$prefill = htmlspecialchars($_POST['email']);
 							}else{
@@ -58,10 +61,10 @@
 							if (isset($_POST['suburb'])){
 								$prefill = htmlspecialchars($_POST['suburb']);
 							}else{
-								$prefill = "";
+								$prefill = "Select A Suburb";
 							}
 							echo '<select id="suburb" name="suburb" required/>
-								  <option value="' . $prefill . '" selected hidden>Select a suburb</option>';
+								  <option value="' . $prefill . '" selected hidden>' . $prefill . '</option>';
 							$suburbSearch = $pdo->query('SELECT DISTINCT Suburb FROM items');
 							foreach ($suburbSearch as $row) {
 								  echo "<option value=" . $row['Suburb'] . ">" . $row['Suburb'] . "</option>";
@@ -75,7 +78,7 @@
 						<br>
 						
 						<button type = "submit" name = "createaccount" value= "CreateAccount" id= "submit">Create Account</button>
-						<?php include('validatesignupform.php');?>
+						<?php processSubmit(); ?>
 					</form>
 				</div>
 			</div>

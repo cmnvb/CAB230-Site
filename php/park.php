@@ -111,8 +111,11 @@ foreach ($parkFetch as $row) {
 							<button type = "submit" name = "leavereview" value= "leavereview">Submit Review</button>
 						</form>
 					</div>';
+				}else{
+					echo ('To Leave A Review, Please Login');
 				}
 					?>
+				
 				<hr>
 			
 				<ul id=review>
@@ -136,6 +139,9 @@ foreach ($parkFetch as $row) {
 							<p itemprop="reviewBody">' . $row["Comment"] . '</p>
 						</div>
 					</li>';
+				if ($commentSearch -> rowCount() == 0) {
+					echo "<h3>No results found, please search again.</h3>";
+				}
 				}
 				?>
 			</ul>
