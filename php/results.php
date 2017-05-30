@@ -68,7 +68,8 @@ session_start();
 
 					echo '<li>
 						<div class="details">
-							<a href="park.php?id=' . $row["id"] . '"><p class="park-name">' . $row["Name"] . '</p></a>
+							<a href="park.php?id=' . $row["id"] . '">
+							<p class="park-name">' . $row["Name"] . '</p></a>
 							<p class="location">' . $row["Suburb"] . '</p>
 							<p class="rating">' . $ratingString . '</p>
 						</div>

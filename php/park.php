@@ -91,19 +91,16 @@ foreach ($parkFetch as $row) {
 			</div>
 			
 			<!-- Reviews -->
-			<ul id=review>
-				<!-- have the  comments disabled until user logs in-->
-				<li><h2>Reviews</h2></li>
-				<li>
+				<div id= "right-side"><h2>Reviews</h2>
 				<?php include('validatecomment.php');
 				if (isset($_SESSION['signedin'])){
 					echo '<div id="leave-review">
-						<h3>Leave a Review:</h3>
 						<form id= "review-form" method="post" action="'. htmlspecialchars($_SERVER['PHP_SELF']) . "?id=" . $_GET['id'] . '"/>
+							<h3>Leave a Review:</h3>
 							<p>You are logged in as: ',  $_SESSION['username'], '</p>
 							<select id="rating" name= "rating" required/>
 								<option selected hidden>Select A Rating</option>
-								<option value "0">&#9734;&#9734;&#9734;&#9734;&#9734;</option>
+								<option value="0">&#9734;&#9734;&#9734;&#9734;&#9734;</option>
 								<option value="1">&#9733;&#9734;&#9734;&#9734;&#9734;</option>
 								<option value="2">&#9733;&#9733;&#9734;&#9734;&#9734;</option>
 								<option value="3">&#9733;&#9733;&#9733;&#9734;&#9734;</option>
@@ -116,7 +113,8 @@ foreach ($parkFetch as $row) {
 					</div>';
 				}
 					?>
-				</li><hr>
+				<hr>
+				<ul id=review>
 				<li>
 					<div id= "user-information">
 						<p class= "username">User Name</p>
@@ -128,6 +126,7 @@ foreach ($parkFetch as $row) {
 					</div>
 				</li>
 			</ul>
+			</div>
 		</div>
 	</main>
 </body>

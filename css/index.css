@@ -1,10 +1,10 @@
-/*Body Background Image*/
+/*---------------------Body Background Image---------------------*/
 body{
 	background: url(../images/search-background.jpg) no-repeat center center fixed;
 	background-size: cover;
 }
 
-/*Search Background*/
+/*---------------------Search Background---------------------*/
 #green-border{
 	background-color: #0D2818;
 	opacity: 0.85;
@@ -25,7 +25,7 @@ body{
 	color: white;
 }
 
-/*Search Area*/
+/*---------------------Search Area---------------------*/
 #wrapper {
 	position: absolute;
 	width: 65%;

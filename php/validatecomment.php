@@ -1,5 +1,6 @@
 <?php require('connectToDB.php'); 
-$rating = $comment = "";
+$comment = "";
+$rating="0";
 $parkID = $_GET['id'];
 
 $date= date("d/m/y");

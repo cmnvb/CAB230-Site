@@ -1,26 +1,4 @@
-/*Header*/
-#header {
-	box-sizing: border-box;
-	top: 40px;
-	position: absolute;
-	height: 50px;
-	width: 80%;
-	padding-right: 20px;
-}
-
-#header-text {
-	float:left;
-	height: 37px;
-	line-height: 37px;
-}
-
-#search-again {
-	float: right;
-	height: 37px;
-	line-height: 37px;
-}
-
-/*Result List*/
+/*---------------------Results---------------------*/
 #results{
 	width:50%;
 	height: 95%;
