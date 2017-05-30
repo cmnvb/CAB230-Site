@@ -33,7 +33,7 @@ session_start();
 			<?php
 			if (isset($_GET['latitude']) || isset($_GET['suburb'])) {
 				if ($_GET['latitude'] != '' && $_GET['longitude'] != '') {
-					$resultsSearch = $pdo -> prepare("SELECT items.id AS id, Name, Suburb, AVG(COALESCE(Rating, 0)) AS Rating,
+					$resultsSearch = $pdo -> prepare("SELECT items.id AS id, Name, Street, Suburb, AVG(COALESCE(Rating, 0)) AS Rating,
 						( 6371 * acos( cos( radians(:userLatitide1) ) * cos( radians( Latitude ) ) * cos( radians( Longitude ) - radians(:userLongitude) ) + sin( radians(:userLatitide2) ) * sin( radians( Latitude ) ) ) ) AS distance, Latitude, Longitude
 						FROM items LEFT JOIN reviews ON items.id = reviews.parkID
 						GROUP BY Name
@@ -46,7 +46,7 @@ session_start();
 					$resultsSearch -> bindValue(":rating", $_GET['rating']);
 
 				} else {
-					$resultsSearch = $pdo -> prepare("SELECT items.id AS id, Name, Suburb, AVG(COALESCE(Rating, 0)) AS Rating, Latitude, Longitude
+					$resultsSearch = $pdo -> prepare("SELECT items.id AS id, Name, Street, Suburb, AVG(COALESCE(Rating, 0)) AS Rating, Latitude, Longitude
 						FROM items LEFT JOIN reviews ON items.id = reviews.parkID
 						WHERE Name LIKE :nameSearch AND Suburb = :suburb
 						GROUP BY Name
@@ -66,13 +66,18 @@ session_start();
 					$ratingString = str_repeat("&#9733;", $row["Rating"]);
 					$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
 
-					echo '<li>
-						<div class="details">
-							<a href="park.php?id=' . $row["id"] . '">
-							<p class="park-name">' . $row["Name"] . '</p></a>
-							<p class="location">' . $row["Suburb"] . '</p>
-							<p class="rating">' . $ratingString . '</p>
-						</div>
+					echo '<li itemprop="location" itemscope itemtype="http://schema.org/Place" class="details">
+						<a itemprop="url" href="park.php?id=' . $row["id"] . '">
+							<p class="park-name"><span itemprop="name">' . $row["Name"] . '</span></p>
+						</a>
+						<p itemprop="address" itemscope  itemtype="http://schema.org/PostalAddress" class="location">
+							<span itemprop="streetAddress">' . $row["Street"] . "</span> <span itemprop='addressLocality'>" . $row["Suburb"] . '</span>
+						</p>
+						<p class="rating">' . $ratingString . '</p>
+						<span itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+							<meta itemprop="latitude" content="' . $row["Latitude"] . '"/>
+							<meta itemprop="longitude" content="' . $row["Longitude"] . '"/>
+						</span>
 					</li>';
 				}
 
