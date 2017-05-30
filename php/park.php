@@ -126,13 +126,14 @@ foreach ($parkFetch as $row) {
 					$ratingString = str_repeat("&#9733;", $row["Rating"]);
 					$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
 					
-				echo '<li><div id= "user-information">
-							<p class= "username">' . $row["Username"] . '</p>
-							<p class= "rating">' . $ratingString . '</p>
-							<p class= "Date">' . $row["DatePosted"] . '</p>
+				echo '<li itemprop="review" itemscope itemtype="http://schema.org/Review">
+						<div id= "user-information">
+							<p itemprop="author">' . $row["Username"] . '</p>
+							<p><span itemprop="reviewRating" content="' . $row["Rating"] . '" />' . $ratingString . '</p>
+							<p><meta itemprop="datePublished" content="' . date('Y-m-d',strtotime($row["DatePosted"])) . '"' . $row["DatePosted"] . '</p>
 						</div>
 						<div id="user-review">
-							<p>' . $row["Comment"] . '</p>
+							<p itemprop="reviewBody">' . $row["Comment"] . '</p>
 						</div>
 					</li>';
 				}
