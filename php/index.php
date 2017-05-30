@@ -37,7 +37,7 @@ session_start();
 						<?php
 						$suburbSearch = $pdo->query('SELECT DISTINCT Suburb FROM items');
 						foreach ($suburbSearch as $row) {
-							echo "<option value=" . $row['Suburb'] . ">" . $row['Suburb'] . "</option>";
+							echo "<option value='" . $row['Suburb'] . "'>" . $row['Suburb'] . "</option>";
 						}
 						?>
 					</select>

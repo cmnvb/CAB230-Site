@@ -1,6 +1,6 @@
-<?php require('connectToDB.php'); 
+<?php require('connectToDB.php');
 session_start();
-$parkFetch = $pdo -> prepare("SELECT Name, Suburb, Street, AVG(COALESCE(Rating, 0)) AS Rating
+$parkFetch = $pdo -> prepare("SELECT Name, Suburb, Street, AVG(COALESCE(Rating, 0)) AS Rating, Latitude, Longitude
 	FROM items LEFT JOIN reviews ON items.id = reviews.parkID
 	WHERE items.id = :parkID
 	GROUP BY items.id");
@@ -15,6 +15,8 @@ foreach ($parkFetch as $row) {
 	$street = $row['Street'];
 	$ratingString = str_repeat("&#9733;", $row["Rating"]);
 	$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
+	$lat = $row['Latitude'];
+	$lon = $row['Longitude'];
 }
 ?>
 <html>
@@ -44,7 +46,42 @@ foreach ($parkFetch as $row) {
 				<a id="search-again" href="index.php">Search again?</a>
 			</div>
 			<div id="left-side">
-				<div id=map-image></div
+				<div id = "map">
+				<script>
+				/* Function for adding park marker */
+				function initMap() {
+					var bounds = new google.maps.LatLngBounds();
+					var parkMap = new google.maps.Map(document.getElementById('map'), {
+						zoom: 1
+					});
+
+					// Add marker for park
+					var parkInfo = new google.maps.InfoWindow({
+						<?php echo "content: '$parkName'" ?>
+					});
+
+					var markerObject = new google.maps.Marker({
+						<?php echo "position: new google.maps.LatLng(parseFloat($lat), parseFloat($lon))," ?>
+						map: parkMap,
+						<?php "title: '$parkName'," ?>
+						infowindow: parkInfo
+					});
+
+					// Add click listener to display info window
+					google.maps.event.addListener(markerObject, 'click', function() {
+							this.infowindow.open(parkMap, this);
+					});
+
+					bounds.extend(markerObject.position);
+
+					parkMap.fitBounds(bounds);
+				}
+				</script>
+				<script async defer
+				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp8B74RCtcjM6j6sfn3JBF8kvBlhsXJ7Y&callback=initMap&sensor=false">
+				</script>
+				</div>
+
 				<!-- overall rating -->
 				<div id= "park-content">
 					<h1><?php echo $ratingString ?></h1>
@@ -74,12 +111,11 @@ foreach ($parkFetch as $row) {
 								<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
 							</select><br>
 							<textarea id="comment" name="comment" placeholder="Leave A Comment" required/></textarea><br>
-							<input type="submit" value="Send" />
+							<button type = "submit" name = "leavereview" value= "leavereview">Submit Review</button>
 						</form>
 					</div>';
 				}
 					?>
-				
 				</li><hr>
 				<li>
 					<div id= "user-information">
