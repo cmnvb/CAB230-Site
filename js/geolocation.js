@@ -1,21 +1,19 @@
-function initialise() {
-	var findMeButton = document.getElementById("findme");
-	findMeButton.addEventListener("click", findPosition);
-}
+var latitude, longitude;
 
 function findPosition() {
 	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(postPosition, alertError);
+		navigator.geolocation.getCurrentPosition(function(position) {
+			latitude = position.coords.latitude;
+			longitude = position.coords.longitude;
+		}, alertError);
 	} else {
 		alert("Geolocation is not supported by this browser.");
 	}
 }
 
-function postPosition(position) {
-	//TODO: Post to results page for searching
-
-	/*Placeholder*/ alert("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
-	window.location.href = "results.html";
+function returnPosition(position) {
+	document.getElementById('lat').value = latitude;
+	document.getElementById('lon').value = longitude;
 }
 
 function alertError(error) {
@@ -40,4 +38,4 @@ function alertError(error) {
 }
 
 // Initialise event listeners after page loading
-window.addEventListener("load", initialise);
+window.addEventListener("load", findPosition);
