@@ -1,5 +1,6 @@
 <?php require('connectToDB.php'); 
-$username = $rating = $comment = "";
+$rating = $comment = "";
+$parkID = $_GET['id'];
 
 $date= date("d/m/y");
 //ger userID From the session
@@ -14,9 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $comment =validate($_POST["comment"]);
 
   try {
-    $stmt =  $pdo ->prepare ('INSERT INTO reviews (UserID, DatePosted, Rating, Comment)
-           VALUES (:UserID, :Date, :Rating, :Comment)');
-    //$stmt ->bindParam(':ParkID', $ParkID);
+    $stmt =  $pdo ->prepare ('INSERT INTO reviews (Username, ParkID, DatePosted, Rating, Comment)
+           VALUES (:Username, :ParkID, :Date, :Rating, :Comment)');
+    $stmt ->bindParam(':Username', $_SESSION['username']);
+    $stmt ->bindParam(':ParkID', $ParkID);
     $stmt ->bindParam(':Date', $date);
     $stmt ->bindParam(':Rating', $rating);
     $stmt ->bindParam(':Comment',$comment);
@@ -25,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo ("comment successful");
   }
   catch(PDOException $e) {
+    // make sure to edit this once it works!!!!!!
     echo($rating) .$e->getMessage();
   }
 }

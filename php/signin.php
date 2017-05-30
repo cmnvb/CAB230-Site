@@ -1,20 +1,22 @@
 <?php require('connectToDB.php');
-	  require('validatePassword.php');
-	  $msg= '';
+require('validatePassword.php');
+session_start();
+$msg= '';
 
 if (isset($_POST['signin']) && !empty($_POST['username']) 
    && !empty($_POST['password'])) {
 	
    if (validatePassword($_POST['username'], $_POST['password'])){
-	$_SESSION['valid'] = true;
+	$_SESSION['signedin'] = true;
 	$_SESSION['timeout'] = time();
-	$_SESSION['username'] = 'username';
+	$_SESSION['username'] = $_POST['username'];
 	$msg ="Successfully Logged In";
 	header("Location: http://localhost:1234/CAB230-Site/php/index.php");
 	exit();
 
    }else {
 	  $msg ='Wrong username or password';
+	  $_SESSION['signedin']= false;
    }
 }
 ?>
@@ -52,4 +54,5 @@ if (isset($_POST['signin']) && !empty($_POST['username'])
 		</div>
 	</main>
 </body>
+<?php include('footer.php'); ?>
 </html>

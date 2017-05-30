@@ -1,16 +1,13 @@
+<!-- Nav -->
+<nav>
+	<a id="home" href="index.php">Brisbane Parks</a>
 	<?php
-   session_start();
-?>
-
-	<!-- Nav -->
-	<nav>
-		<a id="home" href="index.php">Brisbane Parks</a>
-		<a class="nav-element" href="signup.php">Sign up</a>
-		<a class="nav-element" href="signin.php">Log in</a>
-	</nav>
-	
-		<!-- Footer -->
-	<div id="footer">
-		<footer>
-			<p>&#169; Patrick Kim and Anna Clatworthy: CAB230 Assignment 2</p>
-		</footer>
+		if (isset($_SESSION['signedin'])){
+			echo '<a class="nav-element">', $_SESSION['username'], '</a>';
+			echo '<a class="nav-element" href="signout.php">Log Out</a>';
+		}else{
+			echo '<a class="nav-element" href="signup.php">Sign up</a>';
+			echo '<a class="nav-element" href="signin.php">Log in</a>';
+		}
+	?>
+</nav>

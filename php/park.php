@@ -1,5 +1,5 @@
 <?php require('connectToDB.php'); 
-
+session_start();
 $parkFetch = $pdo -> prepare("SELECT Name, Suburb, Street, AVG(COALESCE(Rating, 0)) AS Rating
 	FROM items LEFT JOIN reviews ON items.id = reviews.parkID
 	WHERE items.id = :parkID
@@ -16,7 +16,7 @@ foreach ($parkFetch as $row) {
 	$ratingString = str_repeat("&#9733;", $row["Rating"]);
 	$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
 }
-?><!DOCTYPE html>
+?>
 <html>
 <head>
 	<!-- Page Data -->
@@ -38,7 +38,7 @@ foreach ($parkFetch as $row) {
 		<div id="wrapper">
 			<div id="header">
 				<div id="crumb">
-					<p><a href="index.php">Search</a> > <a href="results.php">Results</a> > <?php echo $parkName ?></p>
+					<p><a href="index.php">Search</a> > <a>Results</a> > <?php echo $parkName ?></p>
 				</div>
 				<h1 id="header-text"><?php echo $parkName ?></h1>
 				<a id="search-again" href="index.php">Search again?</a>
@@ -59,25 +59,26 @@ foreach ($parkFetch as $row) {
 				<li><h2>Reviews</h2></li>
 				<li>
 				<?php include('validatecomment.php');
-				if (isset($_SESSION['valid'] ){
-					echo "<div id='leave-review'>
+				if (isset($_SESSION['signedin'])){
+					echo '<div id="leave-review">
 						<h3>Leave a Review:</h3>
-						<form id= 'review-form' method='post' action= 'htmlspecialchars($_SERVER['PHP_SELF'])'>
-							<p>You are logged in as $username</p>
-							<select id='rating' name= 'rating' required/>
-								<option value="" selected hidden>Select A Rating</option>
-								<option value='1'>&#9733;&#9734;&#9734;&#9734;&#9734;</option>
-								<option value='2'>&#9733;&#9733;&#9734;&#9734;&#9734;</option>
-								<option value='3'>&#9733;&#9733;&#9733;&#9734;&#9734;</option>
-								<option value='4'>&#9733;&#9733;&#9733;&#9733;&#9734;</option>
-								<option value='5'>&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+						<form id= "review-form" method="post" action="'. htmlspecialchars($_SERVER['PHP_SELF']) . "?id=" . $_GET['id'] . '"/>
+							<p>You are logged in as: ',  $_SESSION['username'], '</p>
+							<select id="rating" name= "rating" required/>
+								<option selected hidden>Select A Rating</option>
+								<option value "0">&#9734;&#9734;&#9734;&#9734;&#9734;</option>
+								<option value="1">&#9733;&#9734;&#9734;&#9734;&#9734;</option>
+								<option value="2">&#9733;&#9733;&#9734;&#9734;&#9734;</option>
+								<option value="3">&#9733;&#9733;&#9733;&#9734;&#9734;</option>
+								<option value="4">&#9733;&#9733;&#9733;&#9733;&#9734;</option>
+								<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
 							</select><br>
-							<textarea id='comment' name='comment' placeholder='Leave A Comment' required/></textarea><br>
-							<input type='submit' value='Send' />
+							<textarea id="comment" name="comment" placeholder="Leave A Comment" required/></textarea><br>
+							<input type="submit" value="Send" />
 						</form>
-					</div>"
-				};
-					;?>
+					</div>';
+				}
+					?>
 				
 				</li><hr>
 				<li>
@@ -94,4 +95,5 @@ foreach ($parkFetch as $row) {
 		</div>
 	</main>
 </body>
+<?php include('footer.php'); ?>
 </html>

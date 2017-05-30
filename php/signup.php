@@ -1,4 +1,6 @@
-<?php require('connectToDB.php'); ?><!DOCTYPE html>
+<?php require('connectToDB.php');
+	session_start();
+?>
 <html>
 	<head>
 		<!-- Page Data -->
@@ -54,4 +56,5 @@
 			</div>
 		</main>
 	</body>
+	<?php include('footer.php'); ?>
 </html>
