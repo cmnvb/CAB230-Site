@@ -2,16 +2,18 @@
  *Background Image: Botanic gardens. Taken for this assignment
  *Colours:
  *Main dark green: #0d2818
+ *Links Colour:#1d4729
  *Lighter green:#04471c
  *Purple:#895494
  * */
 
-/*Soft style reset*/
+/*---------------------Soft style reset---------------------*/
 * {
 	padding: 0;
 	margin: 0;
 }
 
+/* ---------------------General Styling---------------------*/  
 body{
 	height: 100vh;
 	min-width: 1024px;
@@ -19,7 +21,6 @@ body{
 	/*font size: INSERT SIZE;*/
 	background:url(../images/tree_bark.png);
 }
-
 p{
 	text-decoration: none;
 }
@@ -29,7 +30,6 @@ a:link, a:visited{
 a:link:hover, a:visited:hover{
 	color:#7ea172;
 }
-
 a{
 	text-decoration: none;
 }
@@ -37,9 +37,21 @@ hr{
     height: 1px;
 	background: grey;
 }
+button{
+	background: #895494;
+	color: white;
+	padding:7px 20px;
+	margin: auto;
+	width: 100%;
+}
+button:hover{
+	background:#42113c;
+	-webkit-transition: all .7s ease;
+	-moz-transition: all .7s ease;
+	transition: all .7s ease;
+}
 
-
-/*Nav Styling*/
+/*---------------------Nav Styling---------------------*/
 nav {
 	min-width: 1024px;
 	position: absolute;
@@ -61,7 +73,6 @@ nav > a:link, nav > a:visited{
 nav > a:link:hover,nav > a:visited:hover{
 	color: white;
 }
-
 #home {
 	float: left;
 	padding-left: 10px;
@@ -72,12 +83,10 @@ nav > a:link:hover,nav > a:visited:hover{
 	-moz-transition: -moz-transform 1s ease;
 	transition: transform 1s ease;
 }
-
 #home:visited{
 	color:white;
 	font-family:'Kaushan Script';
 }
-
 /* slight decrease in size for home button*/
 #home:hover{
 	-webkit-transform: scale(.95);
@@ -97,9 +106,7 @@ nav > a:link:hover,nav > a:visited:hover{
 	-moz-transition: all 1s ease;
 	transition: all 1s ease;
 }
-
-
-/*Footer Styling*/
+/*---------------------Footer Styling---------------------*/
 footer {
 	min-width: 1024px;
 	position: absolute;
@@ -116,8 +123,18 @@ footer > p{
 		text-align: center;
 }
 
+form{
+	margin:auto;
+	background-color: #f3f3f3;
+}
 
-/*Global Styling*/
+form >input, form > select{
+	border-style: none;
+	width:100%;
+	background-color: #e6e5e5;
+}
+
+/*---------------------Global Styling---------------------*/
 #wrapper {
 	box-sizing: border-box; 
 	width: 80%;
@@ -130,3 +147,26 @@ footer > p{
 #crumb > p {
 	font-size: 0.7em;
 }
+
+/*---------------------Header(for pages with a header)---------------------*/
+#header {
+	box-sizing: border-box;
+	top: 40px;
+	position: absolute;
+	height: 50px;
+	width: 80%;
+	padding-right: 20px;
+}
+
+#header-text {
+	float:left;
+	height: 37px;
+	line-height: 37px;
+}
+
+#search-again {
+	float: right;
+	height: 37px;
+	line-height: 37px;
+}
+

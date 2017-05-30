@@ -1,47 +1,37 @@
-/*Header*/
-#header {
-	box-sizing: border-box;
-	top: 40px;
-	position: absolute;
-	height: 50px;
-	width: 80%;
-	padding-right: 20px;
-}
-
-#header-text {
-	float:left;
-	height: 37px;
-	line-height: 37px;
-}
-
-#search-again {
-	float: right;
-	height: 37px;
-	line-height: 37px;
-}
-
+/*---------------------Frame Styling---------------------*/
 #left-side {
 	float: left;
 	width: 50%;
 	height: 100%;
 }
-
-#review{
-	width:50%;
+#right-side{
+	width: 50%;
 	height: 100%;
 	float: right;
 	background-color: white;
-	padding: 10px;
+	padding-left: 10px;
 	box-sizing: border-box;
 	overflow-y: auto;
 }
+/*---------------------Maps (Left Side)---------------------*/
+#map{
+	float: left;
+	width: 100%;
+	height: 300px;
+	
+}
+#park-content{
+	float:left;
+	position: relative;
+}
+/*---------------------Reviews (Right Side)---------------------*/
 #leave-review{
 	width: 100%;
-	padding-top:15px;
 	padding-bottom:15px;
+	margin-bottom:5px;
 }
 #leave-review input, select, textarea{
-	margin: 3px;
+	margin-bottom: 10px;
 	font-size: inherit;
 }
 #comment{
@@ -58,19 +48,11 @@
 
 #user-information{
 	display:table-cell;
+	width:40%;
 }
 #user-review{
+	width:60%;
 	padding: 1em;
 	display: table-cell;
 	
-}
-#map{
-	float: left;
-	width: 100%;
-	height: 300px;
-	
-}
-#park-content{
-	float:left;
-	position: relative;
 }
