@@ -5,7 +5,7 @@
  *Links Colour:#1d4729
  *Lighter green:#04471c
  *Purple:#895494
- * */
+ */
 
 /*---------------------Soft style reset---------------------*/
 * {
@@ -14,37 +14,44 @@
 }
 
 /* ---------------------General Styling---------------------*/  
-body{
+body {
 	height: 100vh;
 	min-width: 1024px;
 	font-family: 'Open Sans', sans-serif;
 	/*font size: INSERT SIZE;*/
 	background:url(../images/tree_bark.png);
 }
-p{
+
+p {
 	text-decoration: none;
 }
-a:link, a:visited{
+
+a:link, a:visited {
 	color:#1d4729;
 }
+
 a:link:hover, a:visited:hover{
 	color:#7ea172;
 }
-a{
+
+a {
 	text-decoration: none;
 }
+
 hr{
-    height: 1px;
+	height: 1px;
 	background: grey;
 }
-button{
+
+button {
 	background: #895494;
 	color: white;
 	padding:7px 20px;
 	margin: auto;
 	width: 100%;
 }
-button:hover{
+
+button:hover {
 	background:#42113c;
 	-webkit-transition: all .7s ease;
 	-moz-transition: all .7s ease;
@@ -62,17 +69,21 @@ nav {
 	background-color: #0D2818; /*a darkish green #0D2818*/
 	height: 40px;
 }
+
 nav > a {
 	height: 40px;
 	line-height: 40px;
 	color: white;
 }
+
 nav > a:link, nav > a:visited{
 	color: white;
 }
+
 nav > a:link:hover,nav > a:visited:hover{
 	color: white;
 }
+
 #home {
 	float: left;
 	padding-left: 10px;
@@ -83,10 +94,12 @@ nav > a:link:hover,nav > a:visited:hover{
 	-moz-transition: -moz-transform 1s ease;
 	transition: transform 1s ease;
 }
+
 #home:visited{
 	color:white;
 	font-family:'Kaushan Script';
 }
+
 /* slight decrease in size for home button*/
 #home:hover{
 	-webkit-transform: scale(.95);
@@ -97,7 +110,6 @@ nav > a:link:hover,nav > a:visited:hover{
 .nav-element {
 	float: right;
 	padding: 0 1.5em;
-
 }
 
 .nav-element:hover {
@@ -106,6 +118,7 @@ nav > a:link:hover,nav > a:visited:hover{
 	-moz-transition: all 1s ease;
 	transition: all 1s ease;
 }
+
 /*---------------------Footer Styling---------------------*/
 footer {
 	min-width: 1024px;
@@ -116,7 +129,8 @@ footer {
 	display: block;
 	width: 100%;
 }
-footer > p{
+
+footer > p {
 		background-color: #0D2818;
 		color: white;
 		font-size: 0.7em;
@@ -169,4 +183,3 @@ form >input, form > select, #comment{
 	height: 37px;
 	line-height: 37px;
 }
-

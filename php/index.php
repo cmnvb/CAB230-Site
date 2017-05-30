@@ -14,12 +14,10 @@ session_start();
 
 	<!-- Scripts -->
 	<script type="text/javascript" src="../js/geolocation.js"></script>
-	<script type="text/javascript" src="../js/suburbGreyText.js"></script>
-	<script type="text/javascript" src="../js/ratingGreyText.js"></script>
+	<script type="text/javascript" src="../js/selectGreyPlaceholder.js"></script>
 </head>
 
 <body>
-	<!-- Nav -->
 	<?php include('navbar.php'); ?>
 
 	<main>
@@ -65,6 +63,5 @@ session_start();
 		</div>
 	</main>
 </body>
-<!-- Footer -->
 	<?php include('footer.php'); ?>
 </html>

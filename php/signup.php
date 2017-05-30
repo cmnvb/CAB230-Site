@@ -13,7 +13,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Kaushan+Script%7COpen+Sans" rel="stylesheet">
 	
 		<!-- Scripts -->
-		<script type="text/javascript" src="../js/suburbGreyText.js"></script>
+		<script type="text/javascript" src="../js/selectGreyPlaceholder.js"></script>
 	</head>
 	
 	<body>

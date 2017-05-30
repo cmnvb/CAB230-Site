@@ -1,6 +1,6 @@
 <?php require('connectToDB.php');
 session_start();
-$parkFetch = $pdo -> prepare("SELECT Name, Suburb, Street, AVG(COALESCE(Rating, 0)) AS Rating, Latitude, Longitude
+$parkFetch = $pdo -> prepare("SELECT Name, Suburb, Street, ROUND(AVG(COALESCE(Rating, 0))) AS Rating, Latitude, Longitude
 	FROM items LEFT JOIN reviews ON items.id = reviews.parkID
 	WHERE items.id = :parkID
 	GROUP BY items.id");
@@ -30,6 +30,9 @@ foreach ($parkFetch as $row) {
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/park.css">
 	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Open+Sans" rel="stylesheet">
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="../js/selectGreyPlaceholder.js"></script>
 </head>
 
 <body>
@@ -91,14 +94,46 @@ foreach ($parkFetch as $row) {
 			</div>
 			
 			<!-- Reviews -->
-				<div id= "right-side"><h2>Reviews</h2>
+				<div id= "right-side">
+				<h2>Reviews</h2>
+				<ul id=review>
+			
+				<?php
+				$commentSearch = $pdo->prepare('SELECT * FROM reviews WHERE parkID = :parkID');
+				$commentSearch ->bindValue(":parkID", $_GET['id']);
+				$commentSearch ->execute();
+
+				foreach ($commentSearch as $row) {
+					$ratingString = str_repeat("&#9733;", $row["Rating"]);
+					$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
+
+				echo '
+				<li itemprop="review" itemscope itemtype="http://schema.org/Review">
+					<span itemprop="itemReviewed" itemscope itemtype="http://schema.org/Place">
+						<span itemprop="name" content="' . $parkName .'"/></span>
+					</span>
+					<div id= "user-information">
+						<p itemprop="author">' . $row["Username"] . '</p>
+						<span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+							<p><span itemprop="ratingValue" content=' . $row["Rating"] . '></span>' . $ratingString . '</p>
+						</span>
+						<p><meta itemprop="datePublished" content="' . date('Y-m-d',strtotime($row["DatePosted"])) . '"/>' . $row["DatePosted"] . '</p>
+					</div>
+					<div id="user-review">
+						<p itemprop="reviewBody">' . $row["Comment"] . '</p>
+					</div>
+				</li>';
+				}
+				?>
+
+				<hr>
+				
 				<?php include('validatecomment.php');
 				if (isset($_SESSION['signedin'])){
 					echo '<div id="leave-review">
 						<form id= "review-form" method="post" action="'. htmlspecialchars($_SERVER['PHP_SELF']) . "?id=" . $_GET['id'] . '"/>
 							<h3>Leave a Review:</h3>
-							<p>You are logged in as: ',  $_SESSION['username'], '</p>
-							<select id="rating" name= "rating" required/>
+							<select id="rating" name="rating" required/>
 								<option selected hidden>Select A Rating</option>
 								<option value="0">&#9734;&#9734;&#9734;&#9734;&#9734;</option>
 								<option value="1">&#9733;&#9734;&#9734;&#9734;&#9734;</option>
