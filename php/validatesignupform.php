@@ -37,7 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo ("<br> Account Creation Successful");
   }
   catch(PDOException $e) {
-    echo("Please Try Again") .$e->getMessage();
+        echo('<script language = "javascript">');
+        echo('alert()') .$e->getMessage();
+        echo('</script>');
   }
 }
 $stmt = null;

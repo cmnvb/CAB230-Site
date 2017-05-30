@@ -114,17 +114,29 @@ foreach ($parkFetch as $row) {
 				}
 					?>
 				<hr>
+			
 				<ul id=review>
-				<li>
-					<div id= "user-information">
-						<p class= "username">User Name</p>
-						<p class= "rating">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-						<p class= "Date">Date</p>
-					</div>
-					<div id="user-review">
-						<p> This park was great</p>
-					</div>
-				</li>
+			
+				<?php
+				$commentSearch = $pdo->prepare('SELECT * FROM reviews WHERE parkID = :parkID');
+				$commentSearch ->bindValue(":parkID", $_GET['id']);
+				$commentSearch ->execute();
+
+				foreach ($commentSearch as $row) {
+					$ratingString = str_repeat("&#9733;", $row["Rating"]);
+					$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
+					
+				echo '<li><div id= "user-information">
+							<p class= "username">' . $row["Username"] . '</p>
+							<p class= "rating">' . $ratingString . '</p>
+							<p class= "Date">' . $row["DatePosted"] . '</p>
+						</div>
+						<div id="user-review">
+							<p>' . $row["Comment"] . '</p>
+						</div>
+					</li>';
+				}
+				?>
 			</ul>
 			</div>
 		</div>

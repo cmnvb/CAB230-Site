@@ -14,7 +14,8 @@ session_start();
 
 	<!-- Scripts -->
 	<script type="text/javascript" src="../js/geolocation.js"></script>
-	<script type="text/javascript" src="../js/greyTextFix.js"></script>
+	<script type="text/javascript" src="../js/suburbGreyText.js"></script>
+	<script type="text/javascript" src="../js/ratingGreyText.js"></script>
 </head>
 
 <body>

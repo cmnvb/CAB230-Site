@@ -128,7 +128,7 @@ form{
 	background-color: #f3f3f3;
 }
 
-form >input, form > select{
+form >input, form > select, #comment{
 	border-style: none;
 	width:100%;
 	background-color: #e6e5e5;

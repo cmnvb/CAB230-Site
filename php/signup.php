@@ -13,7 +13,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Kaushan+Script%7COpen+Sans" rel="stylesheet">
 	
 		<!-- Scripts -->
-		<script type="text/javascript" src="../js/greyTextFix.js"></script>
+		<script type="text/javascript" src="../js/suburbGreyText.js"></script>
 	</head>
 	
 	<body>
@@ -26,13 +26,42 @@
 					<p><a href="index.php">Search</a> > Create An Account</p>
 					<form id="registration-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 						<h1 id="header-text">Create An Account</h1>
-						<input type="text" name="username" placeholder="Username" required/>
-					
-						<input type="email" name="email" placeholder="Email Address" required/>
+						<?php
+							if (isset($_POST['username'])){
+								$prefill = htmlspecialchars($_POST['username']);
+							}else{
+								$prefill = "";
+							}
+							echo '<input type="text" name="username" placeholder="Username" value="' . $prefill . '" required/>';
+							
+							if (isset($_POST['email'])){
+								$prefill = htmlspecialchars($_POST['email']);
+							}else{
+								$prefill = "";
+							}
+							echo '<input type="email" name="email" placeholder="Email Address" value="' . $prefill . '" required/>';
+							
+							if (isset($_POST['children'])){
+								$prefill = htmlspecialchars($_POST['children']);
+							}else{
+								$prefill = "";
+							}
+							echo '<input type="number" name="children" placeholder="Number of Children" min="0" value="' . $prefill . '" required/>';
+							
+							if (isset($_POST['bday'])){
+								$prefill = htmlspecialchars($_POST['bday']);
+							}else{
+								$prefill = "";
+							}
+							echo '<input id="DOB" type="date" name="bday" placeholder="Date of Birth dd/mm/yy" onchange="this.style.color = "black"  value="' . $prefill . '" required/>';
+							
+							if (isset($_POST['suburb'])){
+								$prefill = htmlspecialchars($_POST['suburb]);
+							}else{
+								$prefill = "";
+							}
+						?>
 						
-						<input type="number" name="children" placeholder="Number of Children" min="0" required/>
-						
-						<input id="DOB" type="date" name="bday" placeholder="Date of Birth dd/mm/yy" onchange="this.style.color = 'black'" required/>
 						
 						<select id="suburb" name="suburb" required>
 						<option value="" selected hidden>Select a suburb</option>
