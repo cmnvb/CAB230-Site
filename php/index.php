@@ -1,6 +1,5 @@
 <?php require('connectToDB.php');
-session_start();
-?>
+session_start();?><!DOCTYPE html>
 <html>
 <head>
 	<!-- Page Data -->
@@ -18,6 +17,7 @@ session_start();
 </head>
 
 <body>
+	<!-- Nav -->
 	<?php include('navbar.php'); ?>
 
 	<main>
@@ -28,7 +28,7 @@ session_start();
 		<div id="wrapper">
 			<form name="search" action="results.php" method="get">
 				<div id="autofind">
-					<p >Or just <input id="findme" type="submit" value="find me!" onclick="returnPosition();" formnovalidate/></p>
+					<p >Or just <input id="findme" type="submit" value="find me!" onclick="postPosition();"/></p>
 				</div>
 				<div>
 					<select id="suburb" name="suburb">
@@ -57,11 +57,13 @@ session_start();
 				<input id="lat" type="hidden" name="latitude" value=''>
 				<input id="lon" type="hidden" name="longitude" value=''>
 				<div>
-					<input type="submit" value="Search" />
+					<input type="submit" onclick="postSuburb();" value="Search" />
 				</div>
 			</form>
 		</div>
 	</main>
-</body>
+
+	<!-- Footer -->
 	<?php include('footer.php'); ?>
+</body>
 </html>

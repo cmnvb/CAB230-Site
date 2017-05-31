@@ -1,6 +1,37 @@
 <?php require('connectToDB.php');
 session_start();
-?>
+
+if (isset($_GET['latitude']) || isset($_GET['suburb'])) {
+	if ($_GET['latitude'] != '' && $_GET['longitude'] != '') {
+		$resultsSearch = $pdo -> prepare("SELECT items.id AS id, Name, Street, Suburb, ROUND(AVG(COALESCE(Rating, 0))) AS Rating,
+			( 6371 * acos( cos( radians(:userLatitide1) ) * cos( radians( Latitude ) ) * cos( radians( Longitude ) - radians(:userLongitude) ) + sin( radians(:userLatitide2) ) * sin( radians( Latitude ) ) ) ) AS distance, Latitude, Longitude
+			FROM items LEFT JOIN reviews ON items.id = reviews.parkID
+			GROUP BY Name
+			HAVING distance < 2 AND Rating >= :rating
+			ORDER BY Rating;");
+
+		$resultsSearch -> bindValue(":userLatitide1", $_GET['latitude']);
+		$resultsSearch -> bindValue(":userLongitude", $_GET['longitude']);
+		$resultsSearch -> bindValue(":userLatitide2", $_GET['latitude']);
+		$resultsSearch -> bindValue(":rating", $_GET['rating']);
+
+	} else {
+		$resultsSearch = $pdo -> prepare("SELECT items.id AS id, Name, Street, Suburb, ROUND(AVG(COALESCE(Rating, 0))) AS Rating, Latitude, Longitude
+			FROM items LEFT JOIN reviews ON items.id = reviews.parkID
+			WHERE Name LIKE :nameSearch AND Suburb LIKE :suburb
+			GROUP BY Name
+			HAVING Rating >= :rating
+			ORDER BY Rating;");
+
+		$resultsSearch -> bindValue(":nameSearch", "%" . strtoupper($_GET['name']) . "%");
+		$resultsSearch -> bindValue(":suburb", "%" . strtoupper($_GET['suburb']) . "%");
+		$resultsSearch -> bindValue(":rating", $_GET['rating']);
+	}
+
+	$resultsSearch -> execute();
+	$resultsArray = $resultsSearch->fetchAll(PDO::FETCH_ASSOC);
+	$PHPtoJSON = json_encode($resultsArray);
+}?><!DOCTYPE html>
 <html>
 <head>
 	<!-- Page Data -->
@@ -22,7 +53,7 @@ session_start();
 			<!-- Results Header -->
 			<div id="header">
 				<div id="crumb">
-					<p><a href="index.php">Search</a> > Results page</p>
+					<p><a href="index.php">Search</a> &gt; Results page</p>
 				</div>
 				<h1 id="header-text">Top Results</h1>
 				<a id="search-again" href="index.php">Search again?</a>
@@ -32,49 +63,20 @@ session_start();
 			<ul id="results">
 			<?php
 			if (isset($_GET['latitude']) || isset($_GET['suburb'])) {
-				if ($_GET['latitude'] != '' && $_GET['longitude'] != '') {
-					$resultsSearch = $pdo -> prepare("SELECT items.id AS id, Name, Street, Suburb, ROUND(AVG(COALESCE(Rating, 0))) AS Rating,
-						( 6371 * acos( cos( radians(:userLatitide1) ) * cos( radians( Latitude ) ) * cos( radians( Longitude ) - radians(:userLongitude) ) + sin( radians(:userLatitide2) ) * sin( radians( Latitude ) ) ) ) AS distance, Latitude, Longitude
-						FROM items LEFT JOIN reviews ON items.id = reviews.parkID
-						GROUP BY Name
-						HAVING distance < 2 AND Rating >= :rating
-						ORDER BY Rating;");
-
-					$resultsSearch -> bindValue(":userLatitide1", $_GET['latitude']);
-					$resultsSearch -> bindValue(":userLongitude", $_GET['longitude']);
-					$resultsSearch -> bindValue(":userLatitide2", $_GET['latitude']);
-					$resultsSearch -> bindValue(":rating", $_GET['rating']);
-
-				} else {
-					$resultsSearch = $pdo -> prepare("SELECT items.id AS id, Name, Street, Suburb, AVG(COALESCE(Rating, 0)) AS Rating, Latitude, Longitude
-						FROM items LEFT JOIN reviews ON items.id = reviews.parkID
-						WHERE Name LIKE :nameSearch AND Suburb = :suburb
-						GROUP BY Name
-						HAVING Rating >= :rating
-						ORDER BY Rating;");
-
-					$resultsSearch -> bindValue(":nameSearch", "%" . strtoupper($_GET['name']) . "%");
-					$resultsSearch -> bindValue(":suburb", $_GET['suburb']);
-					$resultsSearch -> bindValue(":rating", $_GET['rating']);
-				}
-
-				$resultsSearch -> execute();
-				$resultsArray = $resultsSearch->fetchAll(PDO::FETCH_ASSOC);
-				$PHPtoJSON = json_encode($resultsArray);
-
 				foreach ($resultsArray as $row) {
 					$ratingString = str_repeat("&#9733;", $row["Rating"]);
 					$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
 
-					echo '<li itemprop="location" itemscope itemtype="http://schema.org/Place" class="details">
+					echo '
+					<li itemscope itemtype="http://schema.org/Place" class="details">
 						<a itemprop="url" href="park.php?id=' . $row["id"] . '">
 							<p class="park-name"><span itemprop="name">' . $row["Name"] . '</span></p>
 						</a>
-						<p itemprop="address" itemscope  itemtype="http://schema.org/PostalAddress" class="location">
+						<p itemscope itemprop="address" itemtype="http://schema.org/PostalAddress" class="location">
 							<span itemprop="streetAddress">' . $row["Street"] . "</span> <span itemprop='addressLocality'>" . $row["Suburb"] . '</span>
 						</p>
 						<p class="rating">' . $ratingString . '</p>
-						<span itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+						<span itemscope itemprop="geo" itemtype="http://schema.org/GeoCoordinates">
 							<meta itemprop="latitude" content="' . $row["Latitude"] . '"/>
 							<meta itemprop="longitude" content="' . $row["Longitude"] . '"/>
 						</span>
@@ -85,15 +87,15 @@ session_start();
 					echo "<h3>No results found, please search again.</h3>";
 					echo $_GET["suburb"];
 				}
+
 			} else {
 				echo "<h3>A valid search has not been made.</h3>";
-			}
-			?>
+			}?>
 			</ul>
-			
-			
+
 			<!-- Map -->
 			<div id="map">
+				<!-- Script to intialise map and markers -->
 				<script>
 				/* Function for adding markers using search parameters */
 				function initMap() {
@@ -135,6 +137,8 @@ session_start();
 					parksMap.fitBounds(bounds);
 				}
 				</script>
+
+				<!-- Google Maps API script -->
 				<script async defer
 				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp8B74RCtcjM6j6sfn3JBF8kvBlhsXJ7Y&callback=initMap&sensor=false">
 				</script>
@@ -143,6 +147,6 @@ session_start();
 	</main>
 
 	<!-- Footer -->
-<?php include('footer.php'); ?>
+	<?php include('footer.php'); ?>
 </body>
 </html>

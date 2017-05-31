@@ -1,5 +1,5 @@
 <?php require('connectToDB.php');
-	
+
 function validatePassword(){
 	global $pdo;
 	$checkPassword = $pdo ->prepare('SELECT Username, Password
