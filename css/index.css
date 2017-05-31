@@ -94,6 +94,7 @@ input[type = submit]:hover{
 	background-color: Transparent;
 	border: none;
 	cursor:pointer;
+	text-decoration: underline;
 }
 
 #findme:hover{

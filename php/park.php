@@ -29,7 +29,7 @@ foreach ($parkFetch as $row) {
 	<!-- Styling -->
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/park.css">
-	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script%7COpen+Sans" rel="stylesheet">
 
 	<!-- Scripts -->
 	<script type="text/javascript" src="../js/selectGreyPlaceholder.js"></script>
@@ -43,13 +43,14 @@ foreach ($parkFetch as $row) {
 		<div id="wrapper">
 			<div id="header">
 				<div id="crumb">
-					<p><a href="index.php">Search</a> > <a>Results</a> > <?php echo $parkName ?></p>
+					<p><a href="index.php">Search</a> &gt; <a>Results</a> > <?php echo $parkName ?></p>
 				</div>
 				<h1 id="header-text"><?php echo $parkName ?></h1>
 				<a id="search-again" href="index.php">Search again?</a>
 			</div>
 			<div id="left-side">
 				<div id = "map">
+				<!-- Script to intialise map and markers -->
 				<script>
 				/* Function for adding park marker */
 				function initMap() {
@@ -80,6 +81,8 @@ foreach ($parkFetch as $row) {
 					parkMap.fitBounds(bounds);
 				}
 				</script>
+
+				<!-- Google Maps API script -->
 				<script async defer
 				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp8B74RCtcjM6j6sfn3JBF8kvBlhsXJ7Y&callback=initMap&sensor=false">
 				</script>
@@ -108,33 +111,32 @@ foreach ($parkFetch as $row) {
 					$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
 
 				echo '
-				<li itemprop="review" itemscope itemtype="http://schema.org/Review">
-					<span itemprop="itemReviewed" itemscope itemtype="http://schema.org/Place">
-						<span itemprop="name" content="' . $parkName .'"/></span>
+				<li itemscope itemtype="http://schema.org/Review">
+					<span itemscope itemprop="itemReviewed" itemtype="http://schema.org/Place">
+						<meta itemprop="name" content="' . $parkName .'"/>
 					</span>
-					<div id= "user-information">
+					<div class="user-information">
 						<p itemprop="author">' . $row["Username"] . '</p>
-						<span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
-							<p><span itemprop="ratingValue" content=' . $row["Rating"] . '></span>' . $ratingString . '</p>
-						</span>
+						<p itemscope itemprop="reviewRating" itemtype="http://schema.org/Rating"><meta itemprop="ratingValue" content=' . $row["Rating"] . ' />' . $ratingString . '</p>
 						<p><meta itemprop="datePublished" content="' . date('Y-m-d',strtotime($row["DatePosted"])) . '"/>' . $row["DatePosted"] . '</p>
 					</div>
-					<div id="user-review">
+					<div class="user-review">
 						<p itemprop="reviewBody">' . $row["Comment"] . '</p>
 					</div>
 				</li>';
 				}
 				?>
 
+				</ul>
 				<hr>
-				
-				<?php include('validatecomment.php');
+
+				<?php include('validateComment.php');
 				if (isset($_SESSION['signedin'])){
 					echo '<div id="leave-review">
-						<form id= "review-form" method="post" action="'. htmlspecialchars($_SERVER['PHP_SELF']) . "?id=" . $_GET['id'] . '"/>
+						<form id="review-form" method="post" action="'. htmlspecialchars($_SERVER['PHP_SELF']) . "?id=" . $_GET['id'] . '"/>
 							<h3>Leave a Review:</h3>
-							<select id="rating" name="rating" required/>
-								<option selected hidden>Select A Rating</option>
+							<select class="rating" name="rating" required/>
+								<option value="" selected hidden>Select A Rating</option>
 								<option value="0">&#9734;&#9734;&#9734;&#9734;&#9734;</option>
 								<option value="1">&#9733;&#9734;&#9734;&#9734;&#9734;</option>
 								<option value="2">&#9733;&#9733;&#9734;&#9734;&#9734;</option>
@@ -142,44 +144,12 @@ foreach ($parkFetch as $row) {
 								<option value="4">&#9733;&#9733;&#9733;&#9733;&#9734;</option>
 								<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
 							</select><br>
-							<textarea id="comment" name="comment" placeholder="Leave A Comment" required/></textarea><br>
-							<button type = "submit" name = "leavereview" value= "leavereview">Submit Review</button>
+							<textarea class="comment" name="comment" placeholder="Leave A Comment" required/></textarea><br>
+							<button type="submit" name="leavereview" value= "leavereview">Submit Review</button>
 						</form>
 					</div>';
-				}else{
-					echo ('To Leave A Review, Please Login');
 				}
 					?>
-				
-				<hr>
-			
-				<ul id=review>
-			
-				<?php
-				$commentSearch = $pdo->prepare('SELECT * FROM reviews WHERE parkID = :parkID');
-				$commentSearch ->bindValue(":parkID", $_GET['id']);
-				$commentSearch ->execute();
-
-				foreach ($commentSearch as $row) {
-					$ratingString = str_repeat("&#9733;", $row["Rating"]);
-					$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
-					
-				echo '<li itemprop="review" itemscope itemtype="http://schema.org/Review">
-						<div id= "user-information">
-							<p itemprop="author">' . $row["Username"] . '</p>
-							<p><span itemprop="reviewRating" content="' . $row["Rating"] . '" />' . $ratingString . '</p>
-							<p><meta itemprop="datePublished" content="' . date('Y-m-d',strtotime($row["DatePosted"])) . '"' . $row["DatePosted"] . '</p>
-						</div>
-						<div id="user-review">
-							<p itemprop="reviewBody">' . $row["Comment"] . '</p>
-						</div>
-					</li>';
-				if ($commentSearch -> rowCount() == 0) {
-					echo "<h3>No results found, please search again.</h3>";
-				}
-				}
-				?>
-			</ul>
 			</div>
 		</div>
 	</main>
