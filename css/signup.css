@@ -1,4 +1,4 @@
-/*---------------------Reviews (right side)---------------------*/
+/*---------------------Sign up/sign in styling---------------------*/
 #wrapper{
 	padding:40px 10px 0 10px;
 }
@@ -10,6 +10,10 @@
 
 #suburb {
 	color: grey;
+}
+
+#return-submit{
+	text-align: center;
 }
 
 #registration-form{

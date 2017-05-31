@@ -105,6 +105,10 @@ foreach ($parkFetch as $row) {
 				$commentSearch = $pdo->prepare('SELECT * FROM reviews WHERE parkID = :parkID');
 				$commentSearch ->bindValue(":parkID", $_GET['id']);
 				$commentSearch ->execute();
+				if ($commentSearch -> rowCount() == 0) {
+					echo "<h3>No reviews have been made on this park yet.</h3>";
+				}
+
 
 				foreach ($commentSearch as $row) {
 					$ratingString = str_repeat("&#9733;", $row["Rating"]);
@@ -148,8 +152,11 @@ foreach ($parkFetch as $row) {
 							<button type="submit" name="leavereview" value= "leavereview">Submit Review</button>
 						</form>
 					</div>';
+				}else{
+					echo("To leave a review, please sign in.");
 				}
 					?>
+				
 			</div>
 		</div>
 	</main>

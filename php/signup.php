@@ -71,7 +71,8 @@ session_start();?>
 					<input type="password" name="passwordConfirm" placeholder="Confirm Password" title="Must match entered password" pattern="(?=.*[a-z])(?=.*[A-Z]).{4,}" required/>
 					<br>
 					<button type = "submit" name = "createaccount" value= "CreateAccount" id= "submit">Create Account</button>
-					<?php include('validateSignUpForm.php');?>
+					<?php include('validateSignUpForm.php');
+								  processSubmit();?>
 				</form>
 			</div>
 		</div>
