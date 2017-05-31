@@ -1,8 +1,12 @@
-<?php require('connectToDB.php');
+<?php
+//sign in page for Brisbane Parks. Connects to validate password to allow the user to make a comment
+require('connectToDB.php');
 require('validatePassword.php');
 session_start();
 $msg= '';
-
+// if the user presses the signin button, and the username and password are filled the password is then validated to
+//make sure the password is correct. It also increases security through using prepared statements.
+//if there is any errors with the input, the user is provided with a "wrong username or password error
 if (isset($_POST['signin']) && !empty($_POST['username']) 
 	&& !empty($_POST['password'])) {
 
@@ -15,7 +19,6 @@ if (isset($_POST['signin']) && !empty($_POST['username'])
 		exit();
 	}else {
 		$msg ='Wrong username or password';
-		$_SESSION['signedin']= false;
 	}
 }?>
 <html>
@@ -44,8 +47,9 @@ if (isset($_POST['signin']) && !empty($_POST['username'])
 			</div>
 			<form id="registration-form" method="post" action = "signin.php">
 				<h1 id="header-text">Log In To Your Account</h1>
+				
 				<?php if (isset($_POST['username'])){
-							$prefill = htmlspecialchars($_POST['username']);
+							$prefill = htmlspecialchars($_POST['username']); //prefills the input so user can review and retry it. 
 						} else {
 							$prefill = "";
 						}

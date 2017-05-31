@@ -1,18 +1,23 @@
-<?php require('connectToDB.php'); 
+<?php
+//validate signup form has all the functions needed to process the user registration. 
+require('connectToDB.php'); 
 $username = $email = $children= $bday = $suburb = $password = "";
 $usernameErr = $emailErr =$childrenErr = $bdayErr = $passwordErr = "";
 
+//validate() formats the information to increase security.
 function validate($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
 }
-
+// error handles the posted information then validates them using the above function. if this all works, the information is
+//passed onto the database. Bindparam for security.
 function processSubmit(){
   global $pdo;
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  //  $searchUsernames = $pdo->prepare('SELECT username FROM members');
+    //commented is the code that made the username unique, however if there was an issue it wouldnt report it and just create a database entry wih no username. 
+  //  $searchUsernames = $pdo->prepare('SELECT username FROM members'); 
   //  $searchUsernames ->execute();
     
  //   if (empty($_POST["username"])) {

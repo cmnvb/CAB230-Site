@@ -1,4 +1,7 @@
-<?php require('connectToDB.php');
+<?php
+//individual park page for Brisbane Parks. This page accesses the database to get the parks details, a map and if any
+//reviews have been left in the page. Users can view the reviews but can only access them when they are signed in. 
+require('connectToDB.php');
 session_start();
 $parkFetch = $pdo -> prepare("SELECT Name, Suburb, Street, ROUND(AVG(COALESCE(Rating, 0))) AS Rating, Latitude, Longitude
 	FROM items LEFT JOIN reviews ON items.id = reviews.parkID
@@ -102,6 +105,7 @@ foreach ($parkFetch as $row) {
 				<ul id=review>
 			
 				<?php
+				//searching for reviews using PDO. 
 				$commentSearch = $pdo->prepare('SELECT * FROM reviews WHERE parkID = :parkID');
 				$commentSearch ->bindValue(":parkID", $_GET['id']);
 				$commentSearch ->execute();
@@ -109,7 +113,7 @@ foreach ($parkFetch as $row) {
 					echo "<h3>No reviews have been made on this park yet.</h3>";
 				}
 
-
+				//comments are displayed in a tabular format 
 				foreach ($commentSearch as $row) {
 					$ratingString = str_repeat("&#9733;", $row["Rating"]);
 					$ratingString .= str_repeat("&#9734;", 5 - $row["Rating"]);
@@ -135,6 +139,7 @@ foreach ($parkFetch as $row) {
 				<hr>
 
 				<?php include('validateComment.php');
+				//if the user is signed in they are able to leave a review on the park. the review is then validated and sent to the database
 				if (isset($_SESSION['signedin'])){
 					echo '<div id="leave-review">
 						<form id="review-form" method="post" action="'. htmlspecialchars($_SERVER['PHP_SELF']) . "?id=" . $_GET['id'] . '"/>

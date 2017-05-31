@@ -1,4 +1,7 @@
-<?php require('connectToDB.php'); 
+<?php
+//validates the comment left on an individual park and sends the data into the database. Uses bindParam for security as well as validate()
+//which peforms a basic trim to prevent any attacks on the database. 
+require('connectToDB.php'); 
 $comment = "";
 
 $date= date("y/m/d");
